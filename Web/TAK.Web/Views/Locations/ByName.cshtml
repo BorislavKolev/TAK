@@ -1,0 +1,120 @@
+﻿@model TAK.Web.ViewModels.Locations.LocationDetailsViewModel
+@using System.Globalization;
+@{
+    this.ViewData["Title"] = this.Model.Name;
+}
+<main id="main">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+       
+    </section><!-- End Intro Single-->
+    <!-- ======= Property Single ======= -->
+    <section class="property-single nav-arrow-b">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+                        <div class="carousel-item-b">
+                            <img src="~/img/slide-2.jpg" alt="">
+                        </div>
+                        <div class="carousel-item-b">
+                            <img src="~/img/slide-3.jpg" alt="">
+                        </div>
+                        <div class="carousel-item-b">
+                            <img src="~/img/slide-1.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="col-md-5 col-lg-4">                          
+                            <div class="property-summary">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="title-box-d section-t4">
+                                            <h3 class="title-d">Контакти</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="summary-list">
+                                    <ul class="list">
+                                        <li class="d-flex justify-content-between">
+                                            <strong>Адрес:</strong>
+                                            <span>@Model.Adress</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <strong>Имейл:</strong>
+                                            <span>@Model.Email</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <strong>Телефон:</strong>
+                                            <span>@Model.PhoneNumber</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <strong>Уебсайт:</strong>
+                                            <span>@Model.Website</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <strong>Facebook:</strong>
+                                            <span>@Model.FacebookPage</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <strong>Instagram:</strong>
+                                            <span>@Model.InstagramPage</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-lg-7 section-md-t3">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="title-box-d">
+                                        <h3 class="title-d">За нас</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="property-description">
+                                <p class="description color-text-a">
+                                    @Model.Description
+                                </p>
+                            </div>
+                            <div class="row section-t3">
+                                <div class="col-sm-12">
+                                    <div class="title-box-d">
+                                        <h3 class="title-d">Предлагаме</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="amenities-list color-text-a">
+                                <ul class="list-a no-margin">
+                                    <li>Паркинг</li>
+                                    <li>Детски кът</li>
+                                    <li>Приятна атмосфера</li>
+                                    <li>Отлично обслужване</li>
+                                    <li>Семейна обстановка</li>
+                                    <li>Тоалетна</li>
+                                    <li>Вкусна храна</li>
+                                    <li>Десерти</li>
+                                    <li>Бира</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10 offset-md-1">
+                    <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map" aria-selected="false">Локация</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2951.6295031370646!2d22.69363705097505!3d42.28643154763875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14aa9c6693c5328f%3A0xcc5e3380f6952464!2sKyustendil%2C%20Bulgaria!5e0!3m2!1sen!2sve!4v1603659828785!5m2!1sen!2sve" width="100%" height="460" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </section><!-- End Property Single-->
+
+</main><!-- End #main -->

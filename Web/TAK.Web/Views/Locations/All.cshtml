@@ -7,7 +7,7 @@
 
     <!-- ======= Intro Single ======= -->
     <section class="intro-single">
-        <div class="container">
+        @*<div class="container">
             <div class="row">
                 <div class="col-md-12 col-lg-8">
                     <div class="title-single-box">
@@ -28,10 +28,10 @@
                     </nav>
                 </div>
             </div>
-        </div>
-    </section><!-- End Intro Single-->
+        </div>*@
+    </section>
     <!-- ======= Property Grid ======= -->
-    <section class="property-grid grid">
+    <section class="property-grid grid">    
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -57,13 +57,13 @@
                                 <div class="card-overlay-a-content">
                                     <div class="card-header-a">
                                         <h2 class="card-title-a">
-                                            <a href="#">
+                                            <a href="@location.LocationUrl">
                                                 @location.Name
                                             </a>
                                         </h2>
                                     </div>
                                     <div class="card-body-a">
-                                        <a href="property-single.html" class="link-a">
+                                        <a href="@location.LocationUrl" class="link-a">
                                             Click here to view
                                             <span class="ion-ios-arrow-forward"></span>
                                         </a>
