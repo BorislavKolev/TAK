@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace TAK.Data.Migrations
+﻿namespace TAK.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,7 +27,7 @@ namespace TAK.Data.Migrations
                     Website = table.Column<string>(nullable: true),
                     FacebookPage = table.Column<string>(nullable: true),
                     InstagramPage = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: false)
+                    UserId = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -53,7 +54,7 @@ namespace TAK.Data.Migrations
                     Content = table.Column<string>(nullable: false),
                     ImageUrl = table.Column<string>(nullable: false),
                     VideoUrl = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: false)
+                    UserId = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -77,7 +78,7 @@ namespace TAK.Data.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     LocationId = table.Column<int>(nullable: false),
-                    PictureUrl = table.Column<string>(nullable: false)
+                    PictureUrl = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -101,7 +102,7 @@ namespace TAK.Data.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     NewsPostId = table.Column<int>(nullable: false),
-                    PictureUrl = table.Column<string>(nullable: false)
+                    PictureUrl = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {

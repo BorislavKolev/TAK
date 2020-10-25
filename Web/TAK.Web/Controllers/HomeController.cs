@@ -2,9 +2,8 @@
 {
     using System.Diagnostics;
 
-    using TAK.Web.ViewModels;
-
     using Microsoft.AspNetCore.Mvc;
+    using TAK.Web.ViewModels;
 
     public class HomeController : BaseController
     {
