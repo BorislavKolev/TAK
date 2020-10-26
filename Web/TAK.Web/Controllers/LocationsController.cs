@@ -8,7 +8,7 @@
 
     public class LocationsController : BaseController
     {
-        private const int ItemsPerPage = 6;
+        private const int ItemsPerPage = 1;
 
         private readonly ILocationsService locationsService;
 
@@ -47,8 +47,6 @@
 
             var urls = this.locationsService.GetPictureUrls(locationViewModel.Id);
             locationViewModel.Urls = urls;
-            var perks = this.locationsService.GetPerks(locationViewModel.Id);
-            locationViewModel.LocationPerks = perks;
 
             return this.View(locationViewModel);
         }

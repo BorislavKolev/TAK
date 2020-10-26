@@ -8,8 +8,6 @@
 
         ICollection<string> GetPictureUrls(int id);
 
-        ICollection<string> GetPerks(int id);
-
         IEnumerable<T> GetAll<T>(int? take = null, int skip = 0);
 
         int GetLocationsCount();
