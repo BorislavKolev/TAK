@@ -25,6 +25,12 @@
 
         public string InstagramPage { get; set; }
 
+        public string MapLink { get; set; }
+
+        public ICollection<string> LocationPerks { get; set; }
+
+        public string Type { get; set; }
+
         public ICollection<string> Urls { get; set; }
     }
 }
