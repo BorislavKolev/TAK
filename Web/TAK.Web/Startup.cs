@@ -22,6 +22,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using TAK.Services.Data.Contracts;
+    using CloudinaryDotNet;
 
     public class Startup
     {
@@ -56,6 +57,16 @@
             services.AddRazorPages();
 
             services.AddSingleton(this.configuration);
+
+            // Cloudinary setup
+            Account account = new Account(
+                this.configuration["Cloudinary:AppName"],
+                this.configuration["Cloudinary:AppKey"],
+                this.configuration["Cloudinary:AppSecret"]);
+
+            Cloudinary cloudinary = new Cloudinary(account);
+
+            services.AddSingleton(cloudinary);
 
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
