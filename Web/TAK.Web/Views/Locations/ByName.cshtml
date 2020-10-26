@@ -15,12 +15,15 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
-                        @foreach (var pictureUrl in Model.Urls)
-                        {
-                            <div class="carousel-item-b">
-                                <img src="@pictureUrl">
-                            </div>
-                        }
+                        <div class="carousel-item-b">
+                            <img src="~/img/slide-2.jpg" alt="">
+                        </div>
+                        <div class="carousel-item-b">
+                            <img src="~/img/slide-3.jpg" alt="">
+                        </div>
+                        <div class="carousel-item-b">
+                            <img src="~/img/slide-1.jpg" alt="">
+                        </div>
                     </div>
                     <div class="row justify-content-between">
                         <div class="col-md-5 col-lg-4">                          
@@ -84,10 +87,15 @@
                             </div>
                             <div class="amenities-list color-text-a">
                                 <ul class="list-a no-margin">
-                                    @foreach (var perk in Model.LocationPerks)
-                                    {
-                                        <li>@perk</li>
-                                    }
+                                    <li>Паркинг</li>
+                                    <li>Детски кът</li>
+                                    <li>Приятна атмосфера</li>
+                                    <li>Отлично обслужване</li>
+                                    <li>Семейна обстановка</li>
+                                    <li>Тоалетна</li>
+                                    <li>Вкусна храна</li>
+                                    <li>Десерти</li>
+                                    <li>Бира</li>
                                 </ul>
                             </div>
                         </div>
@@ -101,7 +109,7 @@
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
-                            <iframe src="@Model.MapLink" width="100%" height="460" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2951.6295031370646!2d22.69363705097505!3d42.28643154763875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14aa9c6693c5328f%3A0xcc5e3380f6952464!2sKyustendil%2C%20Bulgaria!5e0!3m2!1sen!2sve!4v1603659828785!5m2!1sen!2sve" width="100%" height="460" frameborder="0" style="border:0" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>

@@ -52,19 +52,6 @@
             return pictureUrls;
         }
 
-        public ICollection<string> GetPerks(int id)
-        {
-            var perks = this.locationsRepository
-                .All()
-                .Where(x => x.Id == id)
-                .Select(p => p.Perks)
-                .SingleOrDefault()
-                .Split(", ")
-                .ToList();
-
-            return perks;
-        }
-
         public int GetLocationsCount()
         {
             return this.locationsRepository.All().Count();
