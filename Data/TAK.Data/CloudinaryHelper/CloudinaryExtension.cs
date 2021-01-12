@@ -1,4 +1,4 @@
-﻿namespace ProjectCluster.Data.CloudinaryHelper
+﻿namespace TAK.Data.CloudinaryHelper
 {
     using System.Collections.Generic;
     using System.IO;

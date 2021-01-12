@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    using System.Threading.Tasks;
     using TAK.Data.Common.Repositories;
     using TAK.Data.Models;
     using TAK.Services.Data.Contracts;
@@ -17,6 +18,43 @@
         {
             this.locationsRepository = locationsRepository;
             this.locationPicturesRepository = locationPicturesRepository;
+        }
+
+        public async Task<int> CreateAsync(string name, string description, string adress, string phoneNumber, string email, string website, string facebookPage, string instagramPage, string userId, string mapLink, string perks, string type, List<string> imageUrls)
+        {
+            var location = new Location
+            {
+                Name = name,
+                Description = description,
+                Adress = adress,
+                PhoneNumber = phoneNumber,
+                Email = email,
+                Website = website,
+                FacebookPage = facebookPage,
+                InstagramPage = instagramPage,
+                UserId = userId,
+                MapLink = mapLink,
+                Perks = perks,
+                Type = type,
+                ImageUrl = imageUrls.First().Insert(54, "c_fill,h_800,w_600/"),
+            };
+
+            await this.locationsRepository.AddAsync(location);
+            await this.locationsRepository.SaveChangesAsync();
+
+            foreach (var url in imageUrls)
+            {
+                var locationPicture = new LocationPicture
+                {
+                    PictureUrl = url.Insert(54, "c_fill,h_960,w_1920/"),
+                    LocationId = location.Id,
+                };
+
+                await this.locationPicturesRepository.AddAsync(locationPicture);
+                await this.locationPicturesRepository.SaveChangesAsync();
+            }
+
+            return location.Id;
         }
 
         public IEnumerable<T> GetAll<T>(int? take = null, int skip = 0)
