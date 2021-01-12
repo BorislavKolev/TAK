@@ -2,6 +2,7 @@
 {
     using System;
 
+    using System.Linq;
     using Microsoft.AspNetCore.Mvc;
     using TAK.Services.Data.Contracts;
     using TAK.Web.ViewModels.Locations;
@@ -17,14 +18,23 @@
             this.locationsService = locationsService;
         }
 
-        public IActionResult All(string name, int page = 1)
+        public IActionResult All(string filter, int page = 1)
         {
+            ViewData["CurrentFilter"] = filter;
+
             var viewModel = new LocationsListViewModel();
 
             var count = this.locationsService.GetLocationsCount();
 
             viewModel.PagesCount = (int)Math.Ceiling((double)count / ItemsPerPage);
-            viewModel.Locations = this.locationsService.GetAll<LocationsListItemViewModel>(ItemsPerPage, (page - 1) * ItemsPerPage);
+            var locations = this.locationsService.GetAll<LocationsListItemViewModel>(ItemsPerPage, (page - 1) * ItemsPerPage);
+
+            if (!String.IsNullOrEmpty(filter))
+            {
+                locations = locations.Where(l => l.Type == filter);
+            }
+
+            viewModel.Locations = locations;
 
             if (viewModel.PagesCount == 0)
             {
