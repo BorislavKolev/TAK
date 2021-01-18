@@ -10,12 +10,12 @@
         <div class="row">
             <div class="col-md-12 col-lg-8">
                 <div class="title-single-box">
-                    <h1 class="title-single">Our Amazing Posts</h1>
-                    <span class="color-text-a">Grid News</span>
+                    <h1 class="title-single">Новини</h1>
+                    @*<span class="color-text-a">grid news</span>*@
                 </div>
             </div>
             <div class="col-md-12 col-lg-4">
-                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                @*<nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="index.html">Home</a>
@@ -24,7 +24,7 @@
                             News Grid
                         </li>
                     </ol>
-                </nav>
+                </nav>*@
             </div>
         </div>
     </div>
@@ -33,180 +33,78 @@
 <section class="news-grid grid">
     <div class="container">
         <div class="row">
+
+            @foreach (var newsPost in Model.News)
+            {
             <div class="col-md-4">
                 <div class="card-box-b card-shadow news-box">
                     <div class="img-box-b">
-                        <img src="assets/img/post-1.jpg" alt="" class="img-b img-fluid">
+                        <img src="@newsPost.ImageUrl" alt="" class="img-b img-fluid">
                     </div>
                     <div class="card-overlay">
                         <div class="card-header-b">
-                            <div class="card-category-b">
+                            @*<div class="card-category-b">
                                 <a href="#" class="category-b">Travel</a>
-                            </div>
+                            </div>*@
                             <div class="card-title-b">
                                 <h2 class="title-2">
-                                    <a href="blog-single.html">
-                                        Travel is comming
-                                        <br> new
+                                    <a href="@newsPost.NewsPostUrl">
+                                        @newsPost.Title
                                     </a>
                                 </h2>
                             </div>
                             <div class="card-date">
-                                <span class="date-b">18 Sep. 2017</span>
+                                <span class="date-b">@newsPost.CreatedOn</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card-box-b card-shadow news-box">
-                    <div class="img-box-b">
-                        <img src="assets/img/post-2.jpg" alt="" class="img-b img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-header-b">
-                            <div class="card-category-b">
-                                <a href="blog-single.html" class="category-b">Travel</a>
-                            </div>
-                            <div class="card-title-b">
-                                <h2 class="title-2">
-                                    <a href="blog-single.html">
-                                        Travel is comming
-                                        <br> new
-                                    </a>
-                                </h2>
-                            </div>
-                            <div class="card-date">
-                                <span class="date-b">18 Sep. 2017</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-box-b card-shadow news-box">
-                    <div class="img-box-b">
-                        <img src="assets/img/post-3.jpg" alt="" class="img-b img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-header-b">
-                            <div class="card-category-b">
-                                <a href="#" class="category-b">Travel</a>
-                            </div>
-                            <div class="card-title-b">
-                                <h2 class="title-2">
-                                    <a href="blog-single.html">
-                                        Travel is comming
-                                        <br> new
-                                    </a>
-                                </h2>
-                            </div>
-                            <div class="card-date">
-                                <span class="date-b">18 Sep. 2017</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-box-b card-shadow news-box">
-                    <div class="img-box-b">
-                        <img src="assets/img/post-4.jpg" alt="" class="img-b img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-header-b">
-                            <div class="card-category-b">
-                                <a href="#" class="category-b">Travel</a>
-                            </div>
-                            <div class="card-title-b">
-                                <h2 class="title-2">
-                                    <a href="blog-single.html">
-                                        Travel is comming
-                                        <br> new
-                                    </a>
-                                </h2>
-                            </div>
-                            <div class="card-date">
-                                <span class="date-b">18 Sep. 2017</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-box-b card-shadow news-box">
-                    <div class="img-box-b">
-                        <img src="assets/img/post-5.jpg" alt="" class="img-b img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-header-b">
-                            <div class="card-category-b">
-                                <a href="#" class="category-b">Travel</a>
-                            </div>
-                            <div class="card-title-b">
-                                <h2 class="title-2">
-                                    <a href="blog-single.html">
-                                        Travel is comming
-                                        <br> new
-                                    </a>
-                                </h2>
-                            </div>
-                            <div class="card-date">
-                                <span class="date-b">18 Sep. 2017</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-box-b card-shadow news-box">
-                    <div class="img-box-b">
-                        <img src="assets/img/post-6.jpg" alt="" class="img-b img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-header-b">
-                            <div class="card-category-b">
-                                <a href="#" class="category-b">Travel</a>
-                            </div>
-                            <div class="card-title-b">
-                                <h2 class="title-2">
-                                    <a href="blog-single.html">
-                                        Travel is comming
-                                        <br> new
-                                    </a>
-                                </h2>
-                            </div>
-                            <div class="card-date">
-                                <span class="date-b">18 Sep. 2017</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
         <div class="row">
             <div class="col-sm-12">
                 <nav class="pagination-a">
                     <ul class="pagination justify-content-end">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">
-                                <span class="ion-ios-arrow-back"></span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item active">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item next">
-                            <a class="page-link" href="#">
-                                <span class="ion-ios-arrow-forward"></span>
-                            </a>
-                        </li>
+                        @if (this.Model.CurrentPage == 1)
+                        {
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">
+                                    <span class="ion-ios-arrow-back"></span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item previous">
+                                <a asp-route="newsRoute" asp-route-name="" asp-route-page="@(this.Model.CurrentPage - 1)">
+                                    <span class="ion-ios-arrow-back"></span>
+                                </a>
+                            </li>
+                        }
+                        @for (int i = 1; i <= this.Model.PagesCount; i++)
+                        {
+                            var active = i == this.Model.CurrentPage ? "active" : string.Empty;
+                            <li class="page-item @active">
+                                <a asp-route="newsRoute" asp-route-name="" asp-route-page="@i">@i</a>
+                            </li>
+                        }
+                        @if (this.Model.CurrentPage == this.Model.PagesCount)
+                        {
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">
+                                    <span class="ion-ios-arrow-forward"></span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item next">
+                                <a asp-route="newsRoute" asp-route-name="" asp-route-page="@(this.Model.CurrentPage + 1)">
+                                    <span class="ion-ios-arrow-forward"></span>
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </nav>
             </div>

@@ -9,6 +9,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using NickBuhro.Translit;
     using TAK.Data.CloudinaryHelper;
     using TAK.Data.Models;
     using TAK.Services.Data.Contracts;
@@ -95,9 +96,12 @@
 
             var imageUrls = await CloudinaryExtension.UploadMultipleAsync(this.cloudinary, input.Pictures);
 
-            int locationId = await this.locationsService.CreateAsync(input.Name, input.Description, input.Adress, input.PhoneNumber, input.Email, input.Website, input.FacebookPage, input.InstagramPage, user.Id, input.MapLink, input.Perks, input.Type, imageUrls);
+            string latinName = Transliteration.CyrillicToLatin(input.Name, Language.Bulgarian);
+            latinName = latinName.Replace(' ', '-');
 
-            return this.RedirectToAction("ByName", new { name = input.Name });
+            int locationId = await this.locationsService.CreateAsync(input.Name, input.Description, input.Adress, input.PhoneNumber, input.Email, input.Website, input.FacebookPage, input.InstagramPage, user.Id, input.MapLink, input.Perks, input.Type, imageUrls, latinName);
+
+            return this.RedirectToAction("ByName", new { name = latinName });
         }
     }
 }

@@ -16,6 +16,9 @@
         public string Title { get; set; }
 
         [Required]
+        public string LatinTitle { get; set; }
+
+        [Required]
         public string Content { get; set; }
 
         [Required]

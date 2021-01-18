@@ -7,7 +7,7 @@
     {
         T GetByName<T>(string name);
 
-        Task<int> CreateAsync(string name, string description, string adress, string phoneNumber, string email, string website, string facebookPage, string instagramPage, string userId, string mapLink, string perks, string type, List<string> imageUrls);
+        Task<int> CreateAsync(string name, string description, string adress, string phoneNumber, string email, string website, string facebookPage, string instagramPage, string userId, string mapLink, string perks, string type, List<string> imageUrls, string latinName);
 
         ICollection<string> GetPictureUrls(int id);
 

@@ -2,17 +2,7 @@
 {
     using System.Reflection;
 
-    using TAK.Data;
-    using TAK.Data.Common;
-    using TAK.Data.Common.Repositories;
-    using TAK.Data.Models;
-    using TAK.Data.Repositories;
-    using TAK.Data.Seeding;
-    using TAK.Services.Data;
-    using TAK.Services.Mapping;
-    using TAK.Services.Messaging;
-    using TAK.Web.ViewModels;
-
+    using CloudinaryDotNet;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -21,8 +11,17 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using TAK.Data;
+    using TAK.Data.Common;
+    using TAK.Data.Common.Repositories;
+    using TAK.Data.Models;
+    using TAK.Data.Repositories;
+    using TAK.Data.Seeding;
+    using TAK.Services.Data;
     using TAK.Services.Data.Contracts;
-    using CloudinaryDotNet;
+    using TAK.Services.Mapping;
+    using TAK.Services.Messaging;
+    using TAK.Web.ViewModels;
 
     public class Startup
     {
@@ -77,6 +76,7 @@
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<ILocationsService, LocationsService>();
+            services.AddTransient<INewsService, NewsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -116,7 +116,9 @@
                 endpoints =>
                     {
                         endpoints.MapControllerRoute("locationsRoute", "Locations", new { controller = "Locations", action = "All" });
+                        endpoints.MapControllerRoute("newsRoute", "News", new { controller = "News", action = "All" });
                         endpoints.MapControllerRoute("locationDetailsRoute", "Locations/{name}", new { Controller = "Locations", Action = "ByName" });
+                        endpoints.MapControllerRoute("newsDetailsRoute", "News/{name}", new { Controller = "News", Action = "ByName" });
                         endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapRazorPages();

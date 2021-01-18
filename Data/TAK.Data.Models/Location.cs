@@ -16,6 +16,9 @@
         public string Name { get; set; }
 
         [Required]
+        public string LatinName { get; set; }
+
+        [Required]
         public string Description { get; set; }
 
         [Required]
