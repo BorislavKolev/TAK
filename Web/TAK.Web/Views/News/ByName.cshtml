@@ -1,0 +1,96 @@
+﻿@model TAK.Web.ViewModels.News.NewsDetailsViewModel
+@using System.Globalization;
+@{
+    this.ViewData["Title"] = this.Model.Title;
+}
+<main id="main">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <div class="title-single-box">
+                        <h1 class="title-single">@Model.Title</h1>
+                        @*<span class="color-text-a">News Single.</span>*@
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    @*<nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="#">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Book Cover Deisgn
+                            </li>
+                        </ol>
+                    </nav>*@
+                </div>
+            </div>
+        </div>
+    </section><!-- End Intro Single-->
+    <!-- ======= Blog Single ======= -->
+    <section class="news-single nav-arrow-b">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+                        @foreach (var pictureUrl in Model.Urls)
+                        {
+                        <div class="carousel-item-b">
+                            <img src="@pictureUrl" alt="">
+                        </div>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+                    <div class="post-information">
+                        <ul class="list-inline text-center color-a">
+                            <li class="list-inline-item mr-2">
+                                <strong>Автор: </strong>
+                                <span class="color-text-a">Иван Иванов</span>
+                            </li>                        
+                            <li class="list-inline-item">
+                                <strong>Дата: </strong>
+                                <span class="color-text-a">@Model.CreatedOn.ToString("dd.MM.yyyy" + "г.")</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="post-content color-text-a">
+                        @Html.Raw(Model.SanitizedContent)
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-share">
+                            <span>Сподели: </span>
+                            <ul class="list-inline socials">
+                                <li class="list-inline-item">
+                                    @* TO DO: GENERATE UNIQUE LINK WHEN I KNOW THE OFFICIAL DOMAIN AND USE IT IN THE FB SHARE LINK BELOW: string pageUrl= Request.Url.GetLeftPart(UriPartial.Authority).ToString() + "/Uploads/Profiles/Pages/" + post.PostPageLink.ToString();*@
+                                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://stackoverflow.com/questions/57533917/embed-page-links-dynamically-in-fb-share-button-code;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+                                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                @*<li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                                    </a>
+                                </li>*@
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Blog Single-->
+
+</main><!-- End #main -->

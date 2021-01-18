@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-
+    using System.Threading.Tasks;
     using TAK.Data.Common.Repositories;
     using TAK.Data.Models;
     using TAK.Services.Data.Contracts;
@@ -17,6 +17,35 @@
         {
             this.newsPostsRepository = newsPostsRepository;
             this.newsPostPicturesRepository = newsPostPicturesRepository;
+        }
+
+        public async Task<int> CreateAsync(string title, string content, string userId, List<string> imageUrls, string latinTitle)
+        {
+            var newsPost = new NewsPost
+            {
+                Title = title,
+                Content = content,
+                UserId = userId,
+                ImageUrl = imageUrls.First().Insert(54, "c_fill,h_500,w_500/"),
+                LatinTitle = latinTitle,
+            };
+
+            await this.newsPostsRepository.AddAsync(newsPost);
+            await this.newsPostsRepository.SaveChangesAsync();
+
+            foreach (var url in imageUrls)
+            {
+                var newsPostPicture = new NewsPostPicture
+                {
+                    PictureUrl = url.Insert(54, "c_fill,h_960,w_1920/"),
+                    NewsPostId = newsPost.Id,
+                };
+
+                await this.newsPostPicturesRepository.AddAsync(newsPostPicture);
+                await this.newsPostPicturesRepository.SaveChangesAsync();
+            }
+
+            return newsPost.Id;
         }
 
         public IEnumerable<T> GetAll<T>(int? take = null, int skip = 0)
@@ -36,9 +65,9 @@
 
         public T GetByName<T>(string name)
         {
-            var location = this.newsPostsRepository.All().Where(x => x.LatinTitle == name).To<T>().FirstOrDefault();
+            var newsPost = this.newsPostsRepository.All().Where(x => x.LatinTitle == name).To<T>().FirstOrDefault();
 
-            return location;
+            return newsPost;
         }
 
         public ICollection<string> GetPictureUrls(int id)
