@@ -9,8 +9,8 @@
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: 'Poppins', sans-serif;
-  color: #555555;
+    font-family: 'Bahnschrift', sans-serif;
+    color: #555555;
 }
 
 h1,
@@ -133,6 +133,10 @@ a:hover {
 
 .no-margin {
   margin: 0;
+}
+
+.small-font {
+    font-size: 1.5rem;
 }
 
 /*------/ Nav Pills  /------*/
@@ -602,13 +606,13 @@ a:hover {
 # Navbar
 --------------------------------------------------------------*/
 .navbar-default {
-  transition: all .5s ease-in-out;
-  background-color: #ffffff;
-  padding-top: 28px;
-  padding-bottom: 28px;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  box-shadow: 1px 2px 15px rgba(100, 100, 100, 0.3);
+    transition: all .5s ease-in-out;
+    background-color: #ffffff;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    box-shadow: 1px 2px 15px rgba(100, 100, 100, 0.3);
 }
 
 .navbar-default .nav-search {
@@ -1105,12 +1109,12 @@ a:hover {
 
 /*------/ Intro Single /------*/
 .intro-single {
-  padding: 12rem 0 3rem;
+  padding: 12rem 0 1rem;
 }
 
 @media (max-width: 767px) {
   .intro-single {
-    padding-top: 9rem;
+    padding-top: 13rem;
   }
 }
 

@@ -15,6 +15,8 @@
 
         IEnumerable<T> GetAll<T>(int? take = null, int skip = 0);
 
+        IEnumerable<T> GetRandomLocations<T>(int count);
+
         int GetLocationsCount();
     }
 }

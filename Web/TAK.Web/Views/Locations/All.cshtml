@@ -5,45 +5,46 @@
 }
 <main id="main">
 
+
     <!-- ======= Intro Single ======= -->
     <section class="intro-single">
-        @*<div class="container">
+        <div class="container">
             <div class="row">
                 <div class="col-md-12 col-lg-8">
                     <div class="title-single-box">
-                        <h1 class="title-single">Our Amazing Properties</h1>
-                        <span class="color-text-a">Grid Properties</span>
+                        <h1 class="title-single">Нашите обекти</h1>
+                        @*<span class="color-text-a">grid news</span>*@
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-4">
-                    <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="#">Home</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                Properties Grid
-                            </li>
-                        </ol>
-                    </nav>
+                    @*<nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    News Grid
+                                </li>
+                            </ol>
+                        </nav>*@
                 </div>
             </div>
-        </div>*@
-    </section>
+        </div>
+    </section><!-- End Intro Single-->
     <!-- ======= Property Grid ======= -->
-    <section class="property-grid grid">    
+    <section class="property-grid grid">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="grid-option">
                         <form asp-action="All" method="get">
                             <select class="custom-select" name="filter">
-                                <option value="">All</option>
-                                <option value="Restaurant" name="Restaurant">Restaurant</option>
-                                <option value="Caffe" name="Caffe">Caffe</option>
-                                <option value="Hotel" name="Hotel">Hotel</option>
+                                <option value="">Всички</option>
+                                <option value="Ресторанти" name="Ресторанти">Ресторанти</option>
+                                <option value="Кафета" name="Кафета">Кафета</option>
+                                <option value="Хотели" name="Хотели">Хотели</option>
                             </select>
-                            <input type="submit" value="Filter" class="btn btn-default" />
+                            <input type="submit" value="Филтрирай" class="btn btn-default" />
                         </form>
                     </div>
                 </div>
@@ -65,7 +66,7 @@
                                     </div>
                                     <div class="card-body-a">
                                         <a href="@location.LocationUrl" class="link-a">
-                                            Click here to view
+                                            Виж повече
                                             <span class="ion-ios-arrow-forward"></span>
                                         </a>
                                     </div>
@@ -89,8 +90,8 @@
                             }
                             else
                             {
-                                <li>
-                                    <a asp-route="locationsRoute" asp-route-name="" asp-route-page="@(this.Model.CurrentPage - 1)">
+                                <li class="page-item previous">
+                                    <a class="page-link" asp-route="locationsRoute" asp-route-name="" asp-route-page="@(this.Model.CurrentPage - 1)">
                                         <span class="ion-ios-arrow-back"></span>
                                     </a>
                                 </li>
@@ -99,7 +100,7 @@
                             {
                                 var active = i == this.Model.CurrentPage ? "active" : string.Empty;
                                 <li class="page-item @active">
-                                    <a asp-route="locationsRoute" asp-route-name="" asp-route-page="@i">@i</a>
+                                    <a class="page-link" asp-route="locationsRoute" asp-route-name="" asp-route-page="@i">@i</a>
                                 </li>
                             }
                             @if (this.Model.CurrentPage == this.Model.PagesCount)
@@ -113,7 +114,7 @@
                             else
                             {
                                 <li class="page-item next">
-                                    <a asp-route="locationsRoute" asp-route-name="" asp-route-page="@(this.Model.CurrentPage + 1)">
+                                    <a class="page-link" asp-route="locationsRoute" asp-route-name="" asp-route-page="@(this.Model.CurrentPage + 1)">
                                         <span class="ion-ios-arrow-forward"></span>
                                     </a>
                                 </li>

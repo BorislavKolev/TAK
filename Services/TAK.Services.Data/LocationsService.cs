@@ -1,5 +1,6 @@
 ﻿namespace TAK.Services.Data
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -70,6 +71,16 @@
             {
                 query = query.Take(take.Value);
             }
+
+            return query.To<T>().ToList();
+        }
+
+        public IEnumerable<T> GetRandomLocations<T>(int count)
+        {
+            var query = this.locationsRepository
+               .All()
+               .OrderBy(c => Guid.NewGuid())
+               .Take(count);
 
             return query.To<T>().ToList();
         }

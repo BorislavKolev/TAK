@@ -13,6 +13,8 @@
 
         IEnumerable<T> GetAll<T>(int? take = null, int skip = 0);
 
+        IEnumerable<T> GetLast<T>(int count);
+
         int GetNewsCount();
     }
 }

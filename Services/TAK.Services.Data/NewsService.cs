@@ -63,6 +63,16 @@
             return query.To<T>().ToList();
         }
 
+        public IEnumerable<T> GetLast<T>(int count)
+        {
+            var query = this.newsPostsRepository
+               .All()
+               .OrderByDescending(x => x.CreatedOn)
+               .Take(count);
+
+            return query.To<T>().ToList();
+        }
+
         public T GetByName<T>(string name)
         {
             var newsPost = this.newsPostsRepository.All().Where(x => x.LatinTitle == name).To<T>().FirstOrDefault();

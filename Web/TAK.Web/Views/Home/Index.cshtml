@@ -1,4 +1,5 @@
-﻿@using TAK.Common
+﻿@model TAK.Web.ViewModels.Home.LocationsAndNewsInHomePageViewModel
+@using TAK.Common
 @{
     this.ViewData["Title"] = "Home Page";
 }
@@ -15,12 +16,12 @@
                             <div class="col-lg-8">
                                 <div class="intro-body">
                                     @*<p class="intro-title-top">
-                                        Doral, Florida
-                                        <br> 78345
-                                    </p>*@
+                                            Doral, Florida
+                                            <br> 78345
+                                        </p>*@
                                     <h1 class="intro-title mb-4">
                                         <br> Сдружение по туризъм
-                                        <span class="color-b">Кюстендил </span> 
+                                        <span class="color-b">Кюстендил </span>
                                     </h1>
                                     <p class="intro-subtitle intro-price">
                                         <a href="#"><span class="price-a">01.15.2021г.</span></a>
@@ -41,9 +42,9 @@
                             <div class="col-lg-8">
                                 <div class="intro-body">
                                     @*<p class="intro-title-top">
-            Doral, Florida
-            <br> 78345
-        </p>*@
+                                            Doral, Florida
+                                            <br> 78345
+                                        </p>*@
                                     <h1 class="intro-title mb-4">
                                         <br> Сдружение по туризъм
                                         <span class="color-b">Кюстендил </span>
@@ -67,9 +68,9 @@
                             <div class="col-lg-8">
                                 <div class="intro-body">
                                     @*<p class="intro-title-top">
-            Doral, Florida
-            <br> 78345
-        </p>*@
+                                            Doral, Florida
+                                            <br> 78345
+                                        </p>*@
                                     <h1 class="intro-title mb-4">
                                         <br> Сдружение по туризъм
                                         <span class="color-b">Кюстендил </span>
@@ -89,136 +90,136 @@
 
 <main id="main">
 
-        <section class="section-services section-t8">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="title-box-d">
-                                    <h3 class="title-d">За сдружението</h3>
-                                </div>
+    <section class="section-services section-t8">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="title-box-d">
+                                <h3 class="title-d">За сдружението</h3>
                             </div>
                         </div>
-                        <div class="property-description">
-                            <p class="description color-text-a">
-                                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
-                                neque, auctor sit amet
-                                aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta.
-                                Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt
-                                nibh pulvinar quam id dui posuere blandit.
-                            </p>
-                            <p class="description color-text-a no-margin">
-                                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget
-                                malesuada. Quisque velit nisi,
-                                pretium ut lacinia in, elementum id enim. Donec sollicitudin molestie malesuada.
-                            </p>
+                    </div>
+                    <div class="property-description">
+                        <p class="description color-text-a">
+                            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
+                            neque, auctor sit amet
+                            aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta.
+                            Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt
+                            nibh pulvinar quam id dui posuere blandit.
+                        </p>
+                        <p class="description color-text-a no-margin">
+                            Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget
+                            malesuada. Quisque velit nisi,
+                            pretium ut lacinia in, elementum id enim. Donec sollicitudin molestie malesuada.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ======= Services Section ======= -->
+    <section class="section-services section-t8">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title-wrap d-flex justify-content-between">
+                        <div class="title-box">
+                            <h2 class="title-a">Дейности</h2>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- ======= Services Section ======= -->
-        <section class="section-services section-t8">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="title-wrap d-flex justify-content-between">
-                            <div class="title-box">
-                                <h2 class="title-a">Дейности</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card-box-c foo">
+                        <div class="card-header-c d-flex">
+                            <div class="card-box-ico">
+                                <span class="fa fa-bed"></span>
+                            </div>
+                            <div class="card-title-c align-self-center">
+                                <h2 class="title-c">Хотели</h2>
                             </div>
                         </div>
+                        <div class="card-body-c">
+                            <p class="content-c">
+                                Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
+                                convallis a pellentesque
+                                nec, egestas non nisi.
+                            </p>
+                        </div>
+                        @*<div class="card-footer-c">
+                                <a href="#" class="link-c link-icon">
+                                    Read more
+                                    <span class="ion-ios-arrow-forward"></span>
+                                </a>
+                            </div>*@
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card-box-c foo">
-                            <div class="card-header-c d-flex">
-                                <div class="card-box-ico">
-                                    <span class="fa fa-bed"></span>
-                                </div>
-                                <div class="card-title-c align-self-center">
-                                    <h2 class="title-c">Хотели</h2>
-                                </div>
+                <div class="col-md-4">
+                    <div class="card-box-c foo">
+                        <div class="card-header-c d-flex">
+                            <div class="card-box-ico">
+                                <span class="fa fa-cutlery"></span>
                             </div>
-                            <div class="card-body-c">
-                                <p class="content-c">
-                                    Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                                    convallis a pellentesque
-                                    nec, egestas non nisi.
-                                </p>
+                            <div class="card-title-c align-self-center">
+                                <h2 class="title-c">Ресторанти</h2>
                             </div>
-                            @*<div class="card-footer-c">
+                        </div>
+                        <div class="card-body-c">
+                            <p class="content-c">
+                                Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit. Mauris blandit
+                                aliquet elit, eget tincidunt
+                                nibh pulvinar a.
+                            </p>
+                        </div>
+                        @*<div class="card-footer-c">
                                 <a href="#" class="link-c link-icon">
                                     Read more
                                     <span class="ion-ios-arrow-forward"></span>
                                 </a>
                             </div>*@
-                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card-box-c foo">
-                            <div class="card-header-c d-flex">
-                                <div class="card-box-ico">
-                                    <span class="fa fa-cutlery"></span>
-                                </div>
-                                <div class="card-title-c align-self-center">
-                                    <h2 class="title-c">Ресторанти</h2>
-                                </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-box-c foo">
+                        <div class="card-header-c d-flex">
+                            <div class="card-box-ico">
+                                <span class="fa fa-users"></span>
                             </div>
-                            <div class="card-body-c">
-                                <p class="content-c">
-                                    Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit. Mauris blandit
-                                    aliquet elit, eget tincidunt
-                                    nibh pulvinar a.
-                                </p>
+                            <div class="card-title-c align-self-center">
+                                <h2 class="title-c">Услуги</h2>
                             </div>
-                            @*<div class="card-footer-c">
+                        </div>
+                        <div class="card-body-c">
+                            <p class="content-c">
+                                Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
+                                convallis a pellentesque
+                                nec, egestas non nisi.
+                            </p>
+                        </div>
+                        @*<div class="card-footer-c">
                                 <a href="#" class="link-c link-icon">
                                     Read more
                                     <span class="ion-ios-arrow-forward"></span>
                                 </a>
                             </div>*@
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card-box-c foo">
-                            <div class="card-header-c d-flex">
-                                <div class="card-box-ico">
-                                    <span class="fa fa-users"></span>
-                                </div>
-                                <div class="card-title-c align-self-center">
-                                    <h2 class="title-c">Услуги</h2>
-                                </div>
-                            </div>
-                            <div class="card-body-c">
-                                <p class="content-c">
-                                    Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                                    convallis a pellentesque
-                                    nec, egestas non nisi.
-                                </p>
-                            </div>
-                            @*<div class="card-footer-c">
-                                <a href="#" class="link-c link-icon">
-                                    Read more
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>*@
-                        </div>
                     </div>
                 </div>
             </div>
-        </section><!-- End Services Section -->
-        <!-- ======= Intro Single ======= -->
-        <section class="intro-single">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-lg-8">
-                        <div class="title-single-box">
-                            <h1 class="title-single">Кюстендил - красива природа и богата история</h1>
-                        </div>
+        </div>
+    </section><!-- End Services Section -->
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <div class="title-single-box">
+                        <h1 class="title-single">Кюстендил - красива природа и богата история</h1>
                     </div>
-                    @*<div class="col-md-12 col-lg-4">
+                </div>
+                @*<div class="col-md-12 col-lg-4">
                         <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
@@ -230,433 +231,218 @@
                             </ol>
                         </nav>
                     </div>*@
-                </div>
             </div>
-        </section><!-- End Intro Single-->
-        <!-- ======= About Section ======= -->
-        <section class="section-about">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="about-img-box">
-                            <img src="https://res.cloudinary.com/sharwinchester/image/upload/c_fill,h_960,w_1920/v1610620039/4_jwzvug.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="sinse-box">
-                            <h3 class="sinse-title">
-                                Мостът на голите жени
-                                @*<span></span>
+        </div>
+    </section><!-- End Intro Single-->
+    <!-- ======= About Section ======= -->
+    <section class="section-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="about-img-box">
+                        <img src="https://res.cloudinary.com/sharwinchester/image/upload/c_fill,h_960,w_1920/v1610620039/4_jwzvug.jpg" alt="" class="img-fluid">
+                    </div>
+                    <div class="sinse-box">
+                        <h3 class="sinse-title">
+                            Мостът на голите жени
+                            @*<span></span>
                                 <br> Sinse 2017*@
-                            </h3>
-                            <p>10.08.2019г.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-12 section-t8">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-5">
-                                <img src="https://res.cloudinary.com/sharwinchester/image/upload/c_fill,h_800,w_600/v1610620041/5_aazp1g.jpg" alt="" class="img-fluid">
-                            </div>
-                            <div class="col-lg-2  d-none d-lg-block">
-                                <div class="title-vertical d-flex justify-content-start">
-                                    <span>Традиции идващи от античността</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-5 section-md-t3">
-                                <div class="title-box-d">
-                                    <h3 class="title-d">
-                                        Запазени
-                                        @*<span class="color-d">porttitor</span>*@ до наши
-                                        <br> дни.
-                                    </h3>
-                                </div>
-                                <p class="color-text-a">
-                                    Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget
-                                    consectetur sed, convallis
-                                    at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum
-                                    ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
-                                    neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
-                                </p>
-                                <p class="color-text-a">
-                                    Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.
-                                    Mauris blandit aliquet
-                                    elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed,
-                                    convallis at tellus.
-                                </p>
-                            </div>
-                        </div>
+                        </h3>
+                        <p>10.08.2019г.</p>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section class="section-services section-t8">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="title-box-d">
-                                    <h3 class="title-d">История на града</h3>
-                                </div>
+                <div class="col-md-12 section-t8">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-5">
+                            <img src="https://res.cloudinary.com/sharwinchester/image/upload/c_fill,h_800,w_600/v1610620041/5_aazp1g.jpg" alt="" class="img-fluid">
+                        </div>
+                        <div class="col-lg-2  d-none d-lg-block">
+                            <div class="title-vertical d-flex justify-content-start">
+                                <span>Традиции идващи от античността</span>
                             </div>
                         </div>
-                        <div class="property-description">
-                            <p class="description color-text-a">
-                                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
-                                neque, auctor sit amet
-                                aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta.
-                                Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt
-                                nibh pulvinar quam id dui posuere blandit.
+                        <div class="col-md-6 col-lg-5 section-md-t3">
+                            <div class="title-box-d">
+                                <h3 class="title-d">
+                                    Запазени
+                                    @*<span class="color-d">porttitor</span>*@ до наши
+                                    <br> дни.
+                                </h3>
+                            </div>
+                            <p class="color-text-a">
+                                Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget
+                                consectetur sed, convallis
+                                at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum
+                                ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
+                                neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
                             </p>
-                            <p class="description color-text-a no-margin">
-                                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget
-                                malesuada. Quisque velit nisi,
-                                pretium ut lacinia in, elementum id enim. Donec sollicitudin molestie malesuada.
+                            <p class="color-text-a">
+                                Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.
+                                Mauris blandit aliquet
+                                elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed,
+                                convallis at tellus.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- ======= Latest News Section ======= -->
-        <section class="section-news section-t8">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="title-wrap d-flex justify-content-between">
-                            <div class="title-box">
-                                <h2 class="title-a">Последни новини</h2>
-                            </div>
-                            <div class="title-link">
-                                <a href="blog-grid.html">
-                                    Виж всички
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
+        </div>
+    </section>
+    <section class="section-services section-t8">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="title-box-d">
+                                <h3 class="title-d">История на града</h3>
                             </div>
                         </div>
+                    </div>
+                    <div class="property-description">
+                        <p class="description color-text-a">
+                            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
+                            neque, auctor sit amet
+                            aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta.
+                            Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt
+                            nibh pulvinar quam id dui posuere blandit.
+                        </p>
+                        <p class="description color-text-a no-margin">
+                            Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget
+                            malesuada. Quisque velit nisi,
+                            pretium ut lacinia in, elementum id enim. Donec sollicitudin molestie malesuada.
+                        </p>
                     </div>
                 </div>
-                <div id="new-carousel" class="owl-carousel owl-theme">
-                    <div class="carousel-item-c">
-                        <div class="card-box-b card-shadow news-box">
-                            <div class="img-box-b">
-                                <img src="~/img/post-2.jpg" alt="" class="img-b img-fluid">
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-header-b">
-                                    @*<div class="card-category-b">
-                                        <a href="#" class="category-b">House</a>
-                                    </div>*@
-                                    <div class="card-title-b">
-                                        <h2 class="title-2">
-                                            <a href="blog-single.html">
-                                                Туроператорите ще могат да кандидатстват за 51 млн. помощ до края на януари
-                                            </a>
-                                        </h2>
-                                    </div>
-                                    <div class="card-date">
-                                        <span class="date-b">18 Сеп. 2020</span>
-                                    </div>
-                                </div>
-                            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Latest News Section ======= -->
+    <section class="section-news section-t8">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title-wrap d-flex justify-content-between">
+                        <div class="title-box">
+                            <h2 class="title-a">Последни новини</h2>
                         </div>
-                    </div>
-                    <div class="carousel-item-c">
-                        <div class="card-box-b card-shadow news-box">
-                            <div class="img-box-b">
-                                <img src="~/img/post-5.jpg" alt="" class="img-b img-fluid">
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-header-b">
-                                    @*<div class="card-category-b">
-                                        <a href="#" class="category-b">Travel</a>
-                                    </div>*@
-                                    <div class="card-title-b">
-                                        <h2 class="title-2">
-                                            <a href="blog-single.html">
-                                                Туроператорите ще могат да кандидатстват за 51 млн. помощ до края на януари
-                                            </a>
-                                        </h2>
-                                    </div>
-                                    <div class="card-date">
-                                        <span class="date-b">02 Яну. 2021</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item-c">
-                        <div class="card-box-b card-shadow news-box">
-                            <div class="img-box-b">
-                                <img src="~/img/post-7.jpg" alt="" class="img-b img-fluid">
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-header-b">
-                                    @*<div class="card-category-b">
-                                        <a href="#" class="category-b">Park</a>
-                                    </div>*@
-                                    <div class="card-title-b">
-                                        <h2 class="title-2">
-                                            <a href="blog-single.html">
-                                                Хотелиери и ресторантьори: Вирусът няма работно време                                              
-                                            </a>
-                                        </h2>
-                                    </div>
-                                    <div class="card-date">
-                                        <span class="date-b">24 Дек. 2020</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item-c">
-                        <div class="card-box-b card-shadow news-box">
-                            <div class="img-box-b">
-                                <img src="~/img/post-3.jpg" alt="" class="img-b img-fluid">
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-header-b">
-                                    @*<div class="card-category-b">
-                                        <a href="#" class="category-b">Travel</a>
-                                    </div>*@
-                                    <div class="card-title-b">
-                                        <h2 class="title-2">
-                                            <a href="#">
-                                                Добри са условията за ски в Пампорово
-                                            </a>
-                                        </h2>
-                                    </div>
-                                    <div class="card-date">
-                                        <span class="date-b">15 Окт. 2020</span>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="title-link">
+                            <a asp-area="" asp-controller="News" asp-action="All">
+                                Виж всички
+                                <span class="ion-ios-arrow-forward"></span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section><!-- End Latest News Section -->
-        <!-- ======= Latest Properties Section ======= -->
-        <section class="section-property section-t8">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="title-wrap d-flex justify-content-between">
-                            <div class="title-box">
-                                <h2 class="title-a">Нашите обекти</h2>
-                            </div>
-                            <div class="title-link">
-                                <a href="property-grid.html">
-                                    Виж всички
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
+            <div id="new-carousel" class="owl-carousel owl-theme">
+                @foreach (var newsPost in Model.News)
+                {
+                <div class="carousel-item-c">
+                    <div class="card-box-b card-shadow news-box">
+                        <div class="img-box-b">
+                            <img src="@newsPost.ImageUrl" alt="" class="img-b img-fluid">
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-header-b">
+                                @*<div class="card-category-b">
+                        <a href="#" class="category-b">Travel</a>
+                    </div>*@
+                                <div class="card-title-b">
+                                    <h2 class="title-2">
+                                        <a href="@newsPost.NewsPostUrl">
+                                            @newsPost.Title
+                                        </a>
+                                    </h2>
+                                </div>
+                                <div class="card-date">
+                                    <span class="date-b">@newsPost.CreatedOn.ToString("dd.MM.yyyy" + "г.")</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="property-carousel" class="owl-carousel owl-theme">
-                    <div class="carousel-item-b">
-                        <div class="card-box-a card-shadow">
-                            <div class="img-box-a">
-                                <img src="https://res.cloudinary.com/sharwinchester/image/upload/c_fill,h_800,w_600/v1603745098/IMG_0067_wku2vb.jpg" alt="" class="img-a img-fluid">
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-overlay-a-content">
-                                    <div class="card-header-a">
-                                        <h2 class="card-title-a">
-                                            <a href="property-single.html">
-                                                Ресторант Френдс
-                                            </a>
-                                        </h2>
-                                    </div>
-                                    <div class="card-body-a">
-                                        <div class="price-box d-flex">
-                                            <span class="price-a">Ресторанти</span>
-                                        </div>
-                                        <a href="#" class="link-a">
-                                            Виж повече
-                                            <span class="ion-ios-arrow-forward"></span>
-                                        </a>
-                                    </div>
-                                    @*<div class="card-footer-a">
-                                        <ul class="card-info d-flex justify-content-around">
-                                            <li>
-                                                <h4 class="card-info-title">Area</h4>
-                                                <span>
-                                                    340m
-                                                    <sup>2</sup>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <h4 class="card-info-title">Beds</h4>
-                                                <span>2</span>
-                                            </li>
-                                            <li>
-                                                <h4 class="card-info-title">Baths</h4>
-                                                <span>4</span>
-                                            </li>
-                                            <li>
-                                                <h4 class="card-info-title">Garages</h4>
-                                                <span>1</span>
-                                            </li>
-                                        </ul>
-                                    </div>*@
-                                </div>
-                            </div>
+                }              
+            </div>
+        </div>
+    </section><!-- End Latest News Section -->
+    <!-- ======= Latest Properties Section ======= -->
+    <section class="section-property section-t8">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title-wrap d-flex justify-content-between">
+                        <div class="title-box">
+                            <h2 class="title-a">Нашите обекти</h2>
                         </div>
-                    </div>
-                    <div class="carousel-item-b">
-                        <div class="card-box-a card-shadow">
-                            <div class="img-box-a">
-                                <img src="https://res.cloudinary.com/sharwinchester/image/upload/c_scale,h_800,w_600/v1610625844/NZ6_1292_vbuekl.jpg" alt="" class="img-a img-fluid">
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-overlay-a-content">
-                                    <div class="card-header-a">
-                                        <h2 class="card-title-a">
-                                            <a href="property-single.html">
-                                                Хотел Рамира
-                                            </a>
-                                        </h2>
-                                    </div>
-                                    <div class="card-body-a">
-                                        <div class="price-box d-flex">
-                                            <span class="price-a">Хотели</span>
-                                        </div>
-                                        <a href="property-single.html" class="link-a">
-                                            Виж повече
-                                            <span class="ion-ios-arrow-forward"></span>
-                                        </a>
-                                    </div>
-                                    @*<div class="card-footer-a">
-                                        <ul class="card-info d-flex justify-content-around">
-                                            <li>
-                                                <h4 class="card-info-title">Area</h4>
-                                                <span>
-                                                    340m
-                                                    <sup>2</sup>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <h4 class="card-info-title">Beds</h4>
-                                                <span>2</span>
-                                            </li>
-                                            <li>
-                                                <h4 class="card-info-title">Baths</h4>
-                                                <span>4</span>
-                                            </li>
-                                            <li>
-                                                <h4 class="card-info-title">Garages</h4>
-                                                <span>1</span>
-                                            </li>
-                                        </ul>
-                                    </div>*@
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item-b">
-                        <div class="card-box-a card-shadow">
-                            <div class="img-box-a">
-                                <img src="https://res.cloudinary.com/sharwinchester/image/upload/c_fill,h_800,w_600/v1610626724/64329490_2601744636526302_1673908244566769664_o_iog9j2.jpg" alt="" class="img-a img-fluid">
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-overlay-a-content">
-                                    <div class="card-header-a">
-                                        <h2 class="card-title-a">
-                                            <a href="property-single.html">
-                                                Томането
-                                            </a>
-                                        </h2>
-                                    </div>
-                                    <div class="card-body-a">
-                                        <div class="price-box d-flex">
-                                            <span class="price-a">Магазини</span>
-                                        </div>
-                                        <a href="property-single.html" class="link-a">
-                                            Виж повече
-                                            <span class="ion-ios-arrow-forward"></span>
-                                        </a>
-                                    </div>
-                                    @*<div class="card-footer-a">
-                                        <ul class="card-info d-flex justify-content-around">
-                                            <li>
-                                                <h4 class="card-info-title">Area</h4>
-                                                <span>
-                                                    340m
-                                                    <sup>2</sup>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <h4 class="card-info-title">Beds</h4>
-                                                <span>2</span>
-                                            </li>
-                                            <li>
-                                                <h4 class="card-info-title">Baths</h4>
-                                                <span>4</span>
-                                            </li>
-                                            <li>
-                                                <h4 class="card-info-title">Garages</h4>
-                                                <span>1</span>
-                                            </li>
-                                        </ul>
-                                    </div>*@
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item-b">
-                        <div class="card-box-a card-shadow">
-                            <div class="img-box-a">
-                                <img src="~/img/property-10.jpg" alt="" class="img-a img-fluid">
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-overlay-a-content">
-                                    <div class="card-header-a">
-                                        <h2 class="card-title-a">
-                                            <a href="property-single.html">
-                                                Хотел Лазур
-                                            </a>
-                                        </h2>
-                                    </div>
-                                    <div class="card-body-a">
-                                        <div class="price-box d-flex">
-                                            <span class="price-a">Хотели</span>
-                                        </div>
-                                        <a href="property-single.html" class="link-a">
-                                            Виж повече
-                                            <span class="ion-ios-arrow-forward"></span>
-                                        </a>
-                                    </div>
-                                    @*<div class="card-footer-a">
-                                        <ul class="card-info d-flex justify-content-around">
-                                            <li>
-                                                <h4 class="card-info-title">Area</h4>
-                                                <span>
-                                                    340m
-                                                    <sup>2</sup>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <h4 class="card-info-title">Beds</h4>
-                                                <span>2</span>
-                                            </li>
-                                            <li>
-                                                <h4 class="card-info-title">Baths</h4>
-                                                <span>4</span>
-                                            </li>
-                                            <li>
-                                                <h4 class="card-info-title">Garages</h4>
-                                                <span>1</span>
-                                            </li>
-                                        </ul>
-                                    </div>*@
-                                </div>
-                            </div>
+                        <div class="title-link">
+                            <a asp-area="" asp-controller="Locations" asp-action="All">
+                                Виж всички
+                                <span class="ion-ios-arrow-forward"></span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section><!-- End Latest Properties Section -->
+            <div id="property-carousel" class="owl-carousel owl-theme">
+                @foreach (var location in Model.Locations)
+                {
+                <div class="carousel-item-b">
+                    <div class="card-box-a card-shadow">
+                        <div class="img-box-a">
+                            <img src="@location.ImageUrl" alt="" class="img-a img-fluid">
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-overlay-a-content">
+                                <div class="card-header-a">
+                                    <h2 class="card-title-a">
+                                        <a href="@location.LocationUrl">
+                                            @location.Name
+                                        </a>
+                                    </h2>
+                                </div>
+                                <div class="card-body-a">
+                                    <div class="price-box d-flex">
+                                        <span class="price-a">@location.Type</span>
+                                    </div>
+                                    <a href="@location.LocationUrl" class="link-a">
+                                        Виж повече
+                                        <span class="ion-ios-arrow-forward"></span>
+                                    </a>
+                                </div>
+                                @*<div class="card-footer-a">
+                        <ul class="card-info d-flex justify-content-around">
+                            <li>
+                                <h4 class="card-info-title">Area</h4>
+                                <span>
+                                    340m
+                                    <sup>2</sup>
+                                </span>
+                            </li>
+                            <li>
+                                <h4 class="card-info-title">Beds</h4>
+                                <span>2</span>
+                            </li>
+                            <li>
+                                <h4 class="card-info-title">Baths</h4>
+                                <span>4</span>
+                            </li>
+                            <li>
+                                <h4 class="card-info-title">Garages</h4>
+                                <span>1</span>
+                            </li>
+                        </ul>
+                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+                
+            </div>
+        </div>
+    </section><!-- End Latest Properties Section -->
 
 
-    </main><!-- End #main -->
+</main><!-- End #main -->
