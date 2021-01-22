@@ -103,5 +103,43 @@
 
             return this.RedirectToAction("ByName", new { name = latinName });
         }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var locationToEdit = await this.locationsService.GetViewModelByIdAsync<LocationsEditViewModel>(id);
+
+            return this.View(locationToEdit);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(LocationsEditViewModel locationToEdit)
+        {
+            var user = await this.userManager.GetUserAsync(this.User);
+
+            var imageUrls = await CloudinaryExtension.UploadMultipleAsync(this.cloudinary, locationToEdit.Pictures);
+
+            string latinName = Transliteration.CyrillicToLatin(locationToEdit.Name, Language.Bulgarian);
+
+            latinName = latinName.Replace(' ', '-');
+
+            await this.locationsService.EditAsync(locationToEdit.Name, locationToEdit.Description, locationToEdit.Adress, locationToEdit.PhoneNumber, locationToEdit.Email, locationToEdit.Website, locationToEdit.FacebookPage, locationToEdit.InstagramPage, user.Id, locationToEdit.MapLink, locationToEdit.Perks, locationToEdit.Type, imageUrls, latinName, locationToEdit.Id);
+
+            return this.RedirectToAction("ByName", new { name = latinName });
+        }
+
+        public async Task<IActionResult> Remove(int id)
+        {
+            var locationToDelete = await this.locationsService.GetViewModelByIdAsync<LocationDeleteViewModel>(id);
+
+            return this.View(locationToDelete);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Remove(LocationDeleteViewModel locationToDelete)
+        {
+            await this.locationsService.DeleteByIdAsync(locationToDelete.Id);
+
+            return this.RedirectToAction("All");
+        }
     }
 }

@@ -1,0 +1,33 @@
+﻿@model TAK.Web.ViewModels.Locations.LocationDeleteViewModel
+@{
+    ViewData["Title"] = "Remove location";
+}
+
+<h1>@this.ViewData["Title"]</h1>
+
+
+
+<hr />
+<section class="contact">
+    <div class="container">
+        <form asp-controller="Locations" asp-action="Remove" method="post">
+            <div class="col-md-12 mb-3">
+                <div class="form-group">
+                    <label class="control-label" asp-for="Id"></label>
+                    <input asp-for="Id" class="form-control form-control-lg form-control-a" disabled="">
+                </div>
+            </div>
+            <p>Are you sure you want to delete this location?</p>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Id)
+                <div class="text-center">
+                    <input type="submit" value="Yes!" class="btn btn-color btn-rounded" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </form>
+    </div>
+</section>

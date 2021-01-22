@@ -1,5 +1,6 @@
 ﻿namespace TAK.Services.Data
 {
+    using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -58,6 +59,91 @@
             }
 
             return location.Id;
+        }
+
+        public async Task<TViewModel> GetViewModelByIdAsync<TViewModel>(int id)
+        {
+            var locationViewModel = await this.locationsRepository
+                .All()
+                .Where(l => l.Id == id)
+                .To<TViewModel>()
+                .FirstOrDefaultAsync();
+
+            return locationViewModel;
+        }
+
+        public async Task<int> EditAsync(string name, string description, string adress, string phoneNumber, string email, string website, string facebookPage, string instagramPage, string userId, string mapLink, string perks, string type, List<string> imageUrls, string latinName, int id)
+        {
+            var location = await this.locationsRepository
+               .All()
+               .FirstOrDefaultAsync(l => l.Id == id);
+
+            location.Name = name;
+            location.Description = description;
+            location.Adress = adress;
+            location.PhoneNumber = phoneNumber;
+            location.Email = email;
+            location.Website = website;
+            location.FacebookPage = facebookPage;
+            location.InstagramPage = instagramPage;
+            location.UserId = userId;
+            location.MapLink = mapLink;
+            location.Perks = perks;
+            location.Type = type;
+            location.ImageUrl = imageUrls.First().Insert(54, "c_fill,h_800,w_600/");
+            location.LatinName = latinName;
+
+            await this.locationsRepository.SaveChangesAsync();
+
+            var locationPictures = await this.locationPicturesRepository
+               .All()
+               .Where(m => m.LocationId == id)
+               .ToListAsync();
+
+            foreach (var locPic in locationPictures)
+            {
+                locPic.IsDeleted = true;
+                locPic.DeletedOn = DateTime.UtcNow;
+                this.locationPicturesRepository.Update(locPic);
+            }
+
+            foreach (var url in imageUrls)
+            {
+                var locationPicture = new LocationPicture
+                {
+                    PictureUrl = url.Insert(54, "c_fill,h_960,w_1920/"),
+                    LocationId = location.Id,
+                };
+
+                await this.locationPicturesRepository.AddAsync(locationPicture);
+                await this.locationPicturesRepository.SaveChangesAsync();
+            }
+
+            return location.Id;
+        }
+
+        public async Task DeleteByIdAsync(int id)
+        {
+            var location = await this.locationsRepository.All().FirstOrDefaultAsync(l => l.Id == id);
+
+            location.IsDeleted = true;
+            location.DeletedOn = DateTime.UtcNow;
+            this.locationsRepository.Update(location);
+            await this.locationsRepository.SaveChangesAsync();
+
+            var locationPictures = await this.locationPicturesRepository
+                .All()
+                .Where(m => m.LocationId == id)
+                .ToListAsync();
+
+            foreach (var locationPicture in locationPictures)
+            {
+                locationPicture.IsDeleted = true;
+                locationPicture.DeletedOn = DateTime.UtcNow;
+                this.locationPicturesRepository.Update(locationPicture);
+            }
+
+            await this.locationPicturesRepository.SaveChangesAsync();
         }
 
         public IEnumerable<T> GetAll<T>(int? take = null, int skip = 0)
