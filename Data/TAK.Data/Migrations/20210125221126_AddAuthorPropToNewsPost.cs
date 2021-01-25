@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace TAK.Data.Migrations
+﻿namespace TAK.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddAuthorPropToNewsPost : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

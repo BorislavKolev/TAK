@@ -3,9 +3,8 @@ namespace TAK.Data.Models
 {
     using System;
 
-    using TAK.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using TAK.Data.Common.Models;
 
     public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity
     {

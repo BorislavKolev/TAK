@@ -9,7 +9,6 @@
     {
         public ContactsController()
         {
-
         }
 
         public IActionResult Index()

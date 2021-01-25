@@ -33,7 +33,9 @@
 
                     var result = await cloudinary.UploadAsync(uploadParams);
 
+#pragma warning disable CS0618 // 'UploadResult.Uri' is obsolete: 'Property Uri is deprecated, please use Url instead'
                     urls.Add(result.Uri.AbsoluteUri);
+#pragma warning restore CS0618 // 'UploadResult.Uri' is obsolete: 'Property Uri is deprecated, please use Url instead'
                 }
             }
 
@@ -60,7 +62,9 @@
 
                 var result = await cloudinary.UploadAsync(uploadParams);
 
+#pragma warning disable CS0618 // 'UploadResult.Uri' is obsolete: 'Property Uri is deprecated, please use Url instead'
                 url = result.Uri.AbsoluteUri;
+#pragma warning restore CS0618 // 'UploadResult.Uri' is obsolete: 'Property Uri is deprecated, please use Url instead'
             }
 
             return url;

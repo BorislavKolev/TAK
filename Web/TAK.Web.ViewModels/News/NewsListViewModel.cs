@@ -1,6 +1,7 @@
 ﻿namespace TAK.Web.ViewModels.News
 {
     using System.Collections.Generic;
+
     using TAK.Data.Models;
     using TAK.Services.Mapping;
 

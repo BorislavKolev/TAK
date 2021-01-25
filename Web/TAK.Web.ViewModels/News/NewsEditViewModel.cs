@@ -1,7 +1,8 @@
 ﻿namespace TAK.Web.ViewModels.News
 {
-    using Microsoft.AspNetCore.Http;
     using System.Collections.Generic;
+
+    using Microsoft.AspNetCore.Http;
     using TAK.Data.Models;
     using TAK.Services.Mapping;
 

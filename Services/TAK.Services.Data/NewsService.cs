@@ -1,10 +1,11 @@
 ﻿namespace TAK.Services.Data
 {
-    using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
+    using Microsoft.EntityFrameworkCore;
     using TAK.Data.Common.Repositories;
     using TAK.Data.Models;
     using TAK.Services.Data.Contracts;
@@ -82,7 +83,6 @@
 
             return newsPost;
         }
-
 
         public async Task<TViewModel> GetViewModelByIdAsync<TViewModel>(int id)
         {

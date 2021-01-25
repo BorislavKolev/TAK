@@ -1,9 +1,8 @@
 ﻿namespace TAK.Web.Areas.Administration.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
     using TAK.Services.Data;
     using TAK.Web.ViewModels.Administration.Dashboard;
-
-    using Microsoft.AspNetCore.Mvc;
 
     public class DashboardController : AdministrationController
     {
