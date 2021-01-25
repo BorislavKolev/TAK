@@ -1,6 +1,7 @@
 ﻿namespace TAK.Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using CloudinaryDotNet;
     using Ganss.XSS;
@@ -76,7 +77,7 @@
             return this.View(newsViewModel);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             var viewModel = new NewsCreateInputModel();
@@ -85,7 +86,7 @@
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> CreateAsync(NewsCreateInputModel input)
         {
             if (!this.ModelState.IsValid)
@@ -100,9 +101,56 @@
             string latinTitle = Transliteration.CyrillicToLatin(input.Title, Language.Bulgarian);
             latinTitle = latinTitle.Replace(' ', '-');
 
-            int locationId = await this.newsService.CreateAsync(input.Title, input.Content, user.Id, imageUrls, latinTitle);
+            int locationId = await this.newsService.CreateAsync(input.Title, input.Content, user.Id, imageUrls, latinTitle, input.Author);
 
             return this.RedirectToAction("ByName", new { name = latinTitle });
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var locationToEdit = await this.newsService.GetViewModelByIdAsync<NewsEditViewModel>(id);
+
+            return this.View(locationToEdit);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> Edit(NewsEditViewModel newsPostToEdit)
+        {
+            var user = await this.userManager.GetUserAsync(this.User);
+
+            var imageUrls = new List<string>();
+
+            if (newsPostToEdit.Pictures != null)
+            {
+                imageUrls = await CloudinaryExtension.UploadMultipleAsync(this.cloudinary, newsPostToEdit.Pictures);
+            }
+
+            string latinTitle = Transliteration.CyrillicToLatin(newsPostToEdit.Title, Language.Bulgarian);
+
+            latinTitle = latinTitle.Replace(' ', '-');
+
+            await this.newsService.EditAsync(newsPostToEdit.Title, newsPostToEdit.Content, user.Id, imageUrls, latinTitle, newsPostToEdit.Author, newsPostToEdit.Id);
+
+            return this.RedirectToAction("ByName", new { name = latinTitle });
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> Remove(int id)
+        {
+            var newsPostToDelete = await this.newsService.GetViewModelByIdAsync<NewsDeleteViewModel>(id);
+
+            return this.View(newsPostToDelete);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> Remove(NewsDeleteViewModel newsPostToDelete)
+        {
+            await this.newsService.DeleteByIdAsync(newsPostToDelete.Id);
+
+            return this.RedirectToAction("All");
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿namespace TAK.Web.ViewModels.Locations
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 

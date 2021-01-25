@@ -26,6 +26,8 @@
 
         public string VideoUrl { get; set; }
 
+        public string Author { get; set; }
+
         [Required]
         public string UserId { get; set; }
 

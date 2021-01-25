@@ -1,6 +1,7 @@
 ﻿namespace TAK.Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -75,7 +76,7 @@
             return this.View(locationViewModel);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             var viewModel = new LocationsCreateInputModel();
@@ -84,7 +85,7 @@
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> CreateAsync(LocationsCreateInputModel input)
         {
             if (!this.ModelState.IsValid)
@@ -104,6 +105,7 @@
             return this.RedirectToAction("ByName", new { name = latinName });
         }
 
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int id)
         {
             var locationToEdit = await this.locationsService.GetViewModelByIdAsync<LocationsEditViewModel>(id);
@@ -112,11 +114,17 @@
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(LocationsEditViewModel locationToEdit)
         {
             var user = await this.userManager.GetUserAsync(this.User);
 
-            var imageUrls = await CloudinaryExtension.UploadMultipleAsync(this.cloudinary, locationToEdit.Pictures);
+            var imageUrls = new List<string>();
+
+            if (locationToEdit.Pictures != null)
+            {
+                imageUrls = await CloudinaryExtension.UploadMultipleAsync(this.cloudinary, locationToEdit.Pictures);
+            }
 
             string latinName = Transliteration.CyrillicToLatin(locationToEdit.Name, Language.Bulgarian);
 
@@ -127,6 +135,7 @@
             return this.RedirectToAction("ByName", new { name = latinName });
         }
 
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Remove(int id)
         {
             var locationToDelete = await this.locationsService.GetViewModelByIdAsync<LocationDeleteViewModel>(id);
@@ -135,6 +144,7 @@
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Remove(LocationDeleteViewModel locationToDelete)
         {
             await this.locationsService.DeleteByIdAsync(locationToDelete.Id);

@@ -12,6 +12,8 @@
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
 
+        public string Author { get; set; }
+
         public ICollection<IFormFile> Pictures { get; set; }
 
     }

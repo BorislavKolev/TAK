@@ -47,10 +47,13 @@
                 <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
                     <div class="post-information">
                         <ul class="list-inline text-center color-a">
+                            @if(!String.IsNullOrWhiteSpace(Model.Author))
+                            { 
                             <li class="list-inline-item mr-2">
                                 <strong>Автор: </strong>
-                                <span class="color-text-a">Иван Иванов</span>
-                            </li>                        
+                                <span class="color-text-a">@Model.Author</span>
+                            </li>
+                            }
                             <li class="list-inline-item">
                                 <strong>Дата: </strong>
                                 <span class="color-text-a">@Model.CreatedOn.ToString("dd.MM.yyyy" + "г.")</span>
@@ -71,23 +74,30 @@
                                     </a>
                                 </li>
                                 @*<li class="list-inline-item">
-                                    <a href="#">
-                                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">
-                                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">
-                                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                                    </a>
-                                </li>*@
+                        <a href="#">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                        </a>
+                    </li>*@
                             </ul>
                         </div>
                     </div>
+                    @if (this.User.IsInRole("Administrator"))
+                    {
+                        <div class="text-center">
+                            <a asp-controller="News" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-b">Edit</a>
+                            <a asp-controller="News" asp-action="Remove" asp-route-id="@Model.Id" type="submit" class="btn btn-b">Delete</a>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

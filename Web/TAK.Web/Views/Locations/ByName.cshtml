@@ -39,30 +39,50 @@
                                 </div>
                                 <div class="summary-list">
                                     <ul class="list">
-                                        <li class="d-flex justify-content-between">
-                                            <strong>Адрес:</strong>
-                                            <span>@Model.Adress</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between">
-                                            <strong>Имейл:</strong>
-                                            <span>@Model.Email</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between">
-                                            <strong>Телефон:</strong>
-                                            <span>@Model.PhoneNumber</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between">
-                                            <strong>Уебсайт:</strong>
-                                            <span>@Model.Website</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between">
-                                            <strong>Facebook:</strong>
-                                            <span>@Model.FacebookPage</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between">
-                                            <strong>Instagram:</strong>
-                                            <span>@Model.InstagramPage</span>
-                                        </li>
+                                        @if (!String.IsNullOrWhiteSpace(Model.Adress))
+                                        {
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Адрес:</strong>
+                                                <span>@Model.Adress</span>
+                                            </li>
+                                        }
+                                        @if (!String.IsNullOrWhiteSpace(Model.Email))
+                                        {
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Имейл:</strong>
+                                                <span>@Model.Email</span>
+                                            </li>
+                                        }
+                                        @if (!String.IsNullOrWhiteSpace(Model.PhoneNumber))
+                                        {
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Телефон:</strong>
+                                                <span>@Model.PhoneNumber</span>
+                                            </li>
+                                        }
+                                        @if (!String.IsNullOrWhiteSpace(Model.Website))
+                                        {
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Уебсайт:</strong>
+                                                <span>@Model.Website</span>
+                                            </li>
+
+                                        }
+                                        @if (!String.IsNullOrWhiteSpace(Model.FacebookPage))
+                                        {
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Facebook:</strong>
+                                                <span>@Model.FacebookPage</span>
+                                            </li>
+                                        }
+                                        @if (!String.IsNullOrWhiteSpace(Model.InstagramPage))
+                                        {
+
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Instagram:</strong>
+                                                <span>@Model.InstagramPage</span>
+                                            </li>
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -111,6 +131,13 @@
                     </div>
                 </div>
             </div>
+            @if (this.User.IsInRole("Administrator"))
+            {
+            <div class="text-center">
+                <a asp-controller="Locations" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-b">Edit</a>
+                <a asp-controller="Locations" asp-action="Remove" asp-route-id="@Model.Id" type="submit" class="btn btn-b">Delete</a>          
+            </div>
+            }
         </div>
     </section><!-- End Property Single-->
 

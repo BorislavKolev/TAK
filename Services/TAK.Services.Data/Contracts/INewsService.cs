@@ -9,9 +9,15 @@
 
         ICollection<string> GetPictureUrls(int id);
 
-        Task<int> CreateAsync(string title, string content, string userId, List<string> imageUrls, string latinTitle);
+        Task<int> CreateAsync(string title, string content, string userId, List<string> imageUrls, string latinTitle, string author);
 
         IEnumerable<T> GetAll<T>(int? take = null, int skip = 0);
+
+        Task DeleteByIdAsync(int id);
+
+        Task<int> EditAsync(string title, string content, string userId, List<string> imageUrls, string latinTitle, string author, int id);
+
+        Task<TViewModel> GetViewModelByIdAsync<TViewModel>(int id);
 
         IEnumerable<T> GetLast<T>(int count);
 

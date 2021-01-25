@@ -78,6 +78,34 @@
                .All()
                .FirstOrDefaultAsync(l => l.Id == id);
 
+            if (imageUrls.Count > 0)
+            {
+                location.ImageUrl = imageUrls.First().Insert(54, "c_fill,h_800,w_600/");
+                var locationPictures = await this.locationPicturesRepository
+              .All()
+              .Where(m => m.LocationId == id)
+              .ToListAsync();
+
+                foreach (var locPic in locationPictures)
+                {
+                    locPic.IsDeleted = true;
+                    locPic.DeletedOn = DateTime.UtcNow;
+                    this.locationPicturesRepository.Update(locPic);
+                }
+
+                foreach (var url in imageUrls)
+                {
+                    var locationPicture = new LocationPicture
+                    {
+                        PictureUrl = url.Insert(54, "c_fill,h_960,w_1920/"),
+                        LocationId = location.Id,
+                    };
+
+                    await this.locationPicturesRepository.AddAsync(locationPicture);
+                    await this.locationPicturesRepository.SaveChangesAsync();
+                }
+            }
+
             location.Name = name;
             location.Description = description;
             location.Adress = adress;
@@ -90,34 +118,9 @@
             location.MapLink = mapLink;
             location.Perks = perks;
             location.Type = type;
-            location.ImageUrl = imageUrls.First().Insert(54, "c_fill,h_800,w_600/");
             location.LatinName = latinName;
 
             await this.locationsRepository.SaveChangesAsync();
-
-            var locationPictures = await this.locationPicturesRepository
-               .All()
-               .Where(m => m.LocationId == id)
-               .ToListAsync();
-
-            foreach (var locPic in locationPictures)
-            {
-                locPic.IsDeleted = true;
-                locPic.DeletedOn = DateTime.UtcNow;
-                this.locationPicturesRepository.Update(locPic);
-            }
-
-            foreach (var url in imageUrls)
-            {
-                var locationPicture = new LocationPicture
-                {
-                    PictureUrl = url.Insert(54, "c_fill,h_960,w_1920/"),
-                    LocationId = location.Id,
-                };
-
-                await this.locationPicturesRepository.AddAsync(locationPicture);
-                await this.locationPicturesRepository.SaveChangesAsync();
-            }
 
             return location.Id;
         }

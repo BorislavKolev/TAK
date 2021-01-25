@@ -1,5 +1,7 @@
 ﻿namespace TAK.Services.Data
 {
+    using Microsoft.EntityFrameworkCore;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -19,7 +21,7 @@
             this.newsPostPicturesRepository = newsPostPicturesRepository;
         }
 
-        public async Task<int> CreateAsync(string title, string content, string userId, List<string> imageUrls, string latinTitle)
+        public async Task<int> CreateAsync(string title, string content, string userId, List<string> imageUrls, string latinTitle, string author)
         {
             var newsPost = new NewsPost
             {
@@ -28,6 +30,7 @@
                 UserId = userId,
                 ImageUrl = imageUrls.First().Insert(54, "c_fill,h_500,w_500/"),
                 LatinTitle = latinTitle,
+                Author = author,
             };
 
             await this.newsPostsRepository.AddAsync(newsPost);
@@ -78,6 +81,87 @@
             var newsPost = this.newsPostsRepository.All().Where(x => x.LatinTitle == name).To<T>().FirstOrDefault();
 
             return newsPost;
+        }
+
+
+        public async Task<TViewModel> GetViewModelByIdAsync<TViewModel>(int id)
+        {
+            var locationViewModel = await this.newsPostsRepository
+                .All()
+                .Where(l => l.Id == id)
+                .To<TViewModel>()
+                .FirstOrDefaultAsync();
+
+            return locationViewModel;
+        }
+
+        public async Task<int> EditAsync(string title, string content, string userId, List<string> imageUrls, string latinTitle, string author, int id)
+        {
+            var newsPost = await this.newsPostsRepository
+               .All()
+               .FirstOrDefaultAsync(l => l.Id == id);
+
+            if (imageUrls.Count > 0)
+            {
+                newsPost.ImageUrl = imageUrls.First().Insert(54, "c_fill,h_500,w_500/");
+                var locationPictures = await this.newsPostPicturesRepository
+               .All()
+               .Where(m => m.NewsPostId == id)
+               .ToListAsync();
+
+                foreach (var newsPic in locationPictures)
+                {
+                    newsPic.IsDeleted = true;
+                    newsPic.DeletedOn = DateTime.UtcNow;
+                    this.newsPostPicturesRepository.Update(newsPic);
+                }
+
+                foreach (var url in imageUrls)
+                {
+                    var newsPicture = new NewsPostPicture
+                    {
+                        PictureUrl = url.Insert(54, "c_fill,h_960,w_1920/"),
+                        NewsPostId = newsPost.Id,
+                    };
+
+                    await this.newsPostPicturesRepository.AddAsync(newsPicture);
+                    await this.newsPostPicturesRepository.SaveChangesAsync();
+                }
+            }
+
+            newsPost.Title = title;
+            newsPost.Content = content;
+            newsPost.UserId = userId;
+            newsPost.LatinTitle = latinTitle;
+            newsPost.Author = author;
+
+            await this.newsPostsRepository.SaveChangesAsync();
+
+            return newsPost.Id;
+        }
+
+        public async Task DeleteByIdAsync(int id)
+        {
+            var newsPost = await this.newsPostsRepository.All().FirstOrDefaultAsync(l => l.Id == id);
+
+            newsPost.IsDeleted = true;
+            newsPost.DeletedOn = DateTime.UtcNow;
+            this.newsPostsRepository.Update(newsPost);
+            await this.newsPostsRepository.SaveChangesAsync();
+
+            var newsPictures = await this.newsPostPicturesRepository
+                .All()
+                .Where(m => m.NewsPostId == id)
+                .ToListAsync();
+
+            foreach (var newsPic in newsPictures)
+            {
+                newsPic.IsDeleted = true;
+                newsPic.DeletedOn = DateTime.UtcNow;
+                this.newsPostPicturesRepository.Update(newsPic);
+            }
+
+            await this.newsPostPicturesRepository.SaveChangesAsync();
         }
 
         public ICollection<string> GetPictureUrls(int id)
