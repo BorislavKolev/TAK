@@ -1,5 +1,6 @@
 ﻿namespace TAK.Web
 {
+    using System;
     using System.Reflection;
 
     using CloudinaryDotNet;
@@ -22,6 +23,7 @@
     using TAK.Services.Mapping;
     using TAK.Services.Messaging;
     using TAK.Web.ViewModels;
+    using ТАК.Services.Messaging;
 
     public class Startup
     {
@@ -77,6 +79,8 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<ILocationsService, LocationsService>();
             services.AddTransient<INewsService, NewsService>();
+
+            services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGrid:ApiKey"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

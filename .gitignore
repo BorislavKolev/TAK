@@ -359,3 +359,4 @@ MigrationBackup/
 appsettings.Production.json
 *.min.css
 *.min.js
+Web/TAK.Web/appsettings.json

@@ -1,4 +1,4 @@
-﻿namespace TAK.Services.Messaging
+﻿namespace ТАК.Services.Messaging
 {
     using System;
     using System.Collections.Generic;
@@ -7,6 +7,7 @@
 
     using SendGrid;
     using SendGrid.Helpers.Mail;
+    using TAK.Services.Messaging;
 
     public class SendGridEmailSender : IEmailSender
     {
@@ -24,9 +25,10 @@
                 throw new ArgumentException("Subject and message should be provided.");
             }
 
-            var fromAddress = new EmailAddress(from, fromName);
+            var fromAddress = new EmailAddress("sharwinchester@gmail.com", fromName);
             var toAddress = new EmailAddress(to);
-            var message = MailHelper.CreateSingleEmail(fromAddress, toAddress, subject, null, htmlContent);
+            string content = $"<strong>Име: {fromName}</strong><br /><strong>Имейл: {from}</strong><br /><strong>Относно: {subject}</strong><br /><hr>{htmlContent}";
+            var message = MailHelper.CreateSingleEmail(fromAddress, toAddress, subject, null, content);
             if (attachments?.Any() == true)
             {
                 foreach (var attachment in attachments)
