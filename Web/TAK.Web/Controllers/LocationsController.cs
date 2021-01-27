@@ -31,9 +31,10 @@
             this.cloudinary = cloudinary;
         }
 
-        public IActionResult All(string filter, int page = 1)
+        public IActionResult All(string searchString, string filter, int page = 1)
         {
             this.ViewData["CurrentFilter"] = filter;
+            this.ViewData["CurrentSearchString"] = searchString;
 
             var viewModel = new LocationsListViewModel();
 
@@ -45,6 +46,11 @@
             if (!string.IsNullOrEmpty(filter))
             {
                 locations = locations.Where(l => l.Type == filter);
+            }
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                locations = locations.Where(l => l.Name.ToLower().Contains(searchString.ToLower()) || l.Description.ToLower().Contains(searchString.ToLower()));
             }
 
             viewModel.Locations = locations;

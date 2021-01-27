@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using CloudinaryDotNet;
@@ -30,8 +31,10 @@
             this.cloudinary = cloudinary;
         }
 
-        public IActionResult All(string filter, int page = 1)
+        public IActionResult All(string searchString, string filter, int page = 1)
         {
+            this.ViewData["CurrentSearchString"] = searchString;
+
             var viewModel = new NewsListViewModel();
 
             var count = this.newsService.GetNewsCount();
@@ -42,6 +45,11 @@
             if (viewModel.PagesCount == 0)
             {
                 viewModel.PagesCount = 1;
+            }
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                news = news.Where(n => n.Title.ToLower().Contains(searchString.ToLower()) || n.Content.ToLower().Contains(searchString.ToLower()));
             }
 
             viewModel.News = news;
