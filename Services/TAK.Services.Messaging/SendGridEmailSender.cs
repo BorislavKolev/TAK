@@ -20,14 +20,14 @@
 
         public async Task SendEmailAsync(string from, string fromName, string to, string subject, string htmlContent, IEnumerable<EmailAttachment> attachments = null)
         {
-            if (string.IsNullOrWhiteSpace(subject) && string.IsNullOrWhiteSpace(htmlContent))
+            if (string.IsNullOrWhiteSpace(subject) || string.IsNullOrWhiteSpace(htmlContent))
             {
                 throw new ArgumentException("Subject and message should be provided.");
             }
 
-            var fromAddress = new EmailAddress("sharwinchester@gmail.com", fromName);
+            var fromAddress = new EmailAddress("tourismemailsender@gmail.com", fromName);
             var toAddress = new EmailAddress(to);
-            string content = $"<strong>Име: {fromName}</strong><br /><strong>Имейл: {from}</strong><br /><strong>Относно: {subject}</strong><br /><hr>{htmlContent}";
+            string content = $"<strong>Не отговаряйте на този имейл! Изпратете отговора си до получателя: {from}!</strong><br /><strong>От:</strong><br /><strong>Име: {fromName}</strong><br /><strong>Относно: {subject}</strong><br /><hr>{htmlContent}";
             var message = MailHelper.CreateSingleEmail(fromAddress, toAddress, subject, null, content);
             if (attachments?.Any() == true)
             {

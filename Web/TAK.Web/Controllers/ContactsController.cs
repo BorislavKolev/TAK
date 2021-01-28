@@ -24,9 +24,9 @@
         [HttpPost]
         public async Task<IActionResult> SendEmail(ContactsInputModel inputModel)
         {
-            await this.emailSender.SendEmailAsync(inputModel.Email, inputModel.Name, "kolevbv@gmail.com", inputModel.Subject, inputModel.Content);
+            await this.emailSender.SendEmailAsync(inputModel.Email, inputModel.Name, "kolevbv@gmail.com", inputModel.Subject, inputModel.Message);
 
-            return this.Ok();
+            return this.RedirectToAction("Index");
         }
     }
 }

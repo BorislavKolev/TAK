@@ -42,37 +42,37 @@
             <div class="col-sm-12 section-t8">
                 <div class="row">
                     <div class="col-md-7">
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                        <form asp-action="SendEmail" asp-controller="Contacts" method="post" role="form" class="php-email-form">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <div class="form-group">
-                                        <input type="text" name="name" class="form-control form-control-lg form-control-a" placeholder="Име" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                                        <input type="text" name="name" class="form-control form-control-lg form-control-a" placeholder="Име" data-rule="minlen:4" data-msg="Моля въведете поне 4 символа!" id="name">
                                         <div class="validate"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <div class="form-group">
-                                        <input name="email" type="email" class="form-control form-control-lg form-control-a" placeholder="Имейл" data-rule="email" data-msg="Please enter a valid email">
+                                        <input name="email" type="email" class="form-control form-control-lg form-control-a" placeholder="Имейл" data-rule="email" data-msg="Моля въведете валиден имейл!" id="email">
                                         <div class="validate"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <div class="form-group">
-                                        <input type="text" name="subject" class="form-control form-control-lg form-control-a" placeholder="Тема" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                                        <input type="text" name="subject" class="form-control form-control-lg form-control-a" placeholder="Тема" data-rule="minlen:4" data-msg="Моля въведете поне 8 символа за 'Тема'" id="subject">
                                         <div class="validate"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <textarea name="message" class="form-control" name="message" cols="45" rows="8" data-rule="required" data-msg="Please write something for us" placeholder="Съобщение"></textarea>
+                                        <textarea name="message" class="form-control" name="message" cols="45" rows="8" data-rule="required" data-msg="Моля въведете съдържанието на имейла" placeholder="Съобщение" id="message"></textarea>
                                         <div class="validate"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <div class="mb-3">
-                                        <div class="loading">Loading</div>
+                                        <div class="loading">Зареждане</div>
                                         <div class="error-message"></div>
-                                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                                        <div class="sent-message">Вашият имейл беше изпратен успешно. Благодарим Ви!</div>
                                     </div>
                                 </div>
 
