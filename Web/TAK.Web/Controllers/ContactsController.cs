@@ -1,5 +1,6 @@
 ﻿namespace TAK.Web.Controllers
 {
+    using System;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
@@ -15,18 +16,27 @@
             this.emailSender = emailSender;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string message)
         {
-            return this.View();
-        }
+            var viewModel = new ContactsAlertViewModel();
+            viewModel.Message = message;
 
+            return this.View(viewModel);
+        }
 
         [HttpPost]
         public async Task<IActionResult> SendEmail(ContactsInputModel inputModel)
         {
-            await this.emailSender.SendEmailAsync(inputModel.Email, inputModel.Name, "kolevbv@gmail.com", inputModel.Subject, inputModel.Message);
+            try
+            {
+                await this.emailSender.SendEmailAsync(inputModel.Email, inputModel.Name, "kolevbv@gmail.com", inputModel.Subject, inputModel.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                return this.RedirectToAction("Index", new { message = ex.Message });
+            }
 
-            return this.RedirectToAction("Index");
+            return this.RedirectToAction("Index", new { message = "Вашето съобщение беше изпратено успешно!" });
         }
     }
 }

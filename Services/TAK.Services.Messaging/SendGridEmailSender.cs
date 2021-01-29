@@ -20,9 +20,9 @@
 
         public async Task SendEmailAsync(string from, string fromName, string to, string subject, string htmlContent, IEnumerable<EmailAttachment> attachments = null)
         {
-            if (string.IsNullOrWhiteSpace(subject) || string.IsNullOrWhiteSpace(htmlContent))
+            if (string.IsNullOrWhiteSpace(subject) || string.IsNullOrWhiteSpace(htmlContent) || string.IsNullOrWhiteSpace(fromName) || string.IsNullOrWhiteSpace(from))
             {
-                throw new ArgumentException("Subject and message should be provided.");
+                throw new ArgumentException("Моля, въведете всички полета на контактната форма!");
             }
 
             var fromAddress = new EmailAddress("tourismemailsender@gmail.com", fromName);

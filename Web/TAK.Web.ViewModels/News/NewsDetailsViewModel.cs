@@ -13,6 +13,8 @@
 
         public string Title { get; set; }
 
+        public string LatinTitle { get; set; }
+
         public string SanitizedContent { get; set; }
 
         public string Content { get; set; }

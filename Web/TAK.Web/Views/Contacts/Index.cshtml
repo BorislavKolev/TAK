@@ -1,12 +1,27 @@
 ﻿@using TAK.Common
+@model TAK.Web.ViewModels.Contacts.ContactsAlertViewModel
 @{
     this.ViewData["Title"] = "Home Page";
 }
 
 <!-- ======= Intro Single ======= -->
+
 <section class="intro-single">
     <div class="container">
+        @if (Model.Message == "Вашето съобщение беше изпратено успешно!")
+        {
+        <div class="alert alert-success" role="alert">
+            @Model.Message
+        </div>
+        }
+        else if (Model.Message == "Моля, въведете всички полета на контактната форма!")
+        {
+        <div class="alert alert-danger" role="alert">
+            @Model.Message
+        </div>
+        }
         <div class="row">
+
             <div class="col-md-12 col-lg-8">
                 <div class="title-single-box">
                     <h1 class="title-single">Контакти</h1>
@@ -15,15 +30,15 @@
             </div>
             <div class="col-md-12 col-lg-4">
                 @*<nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">
-                            Contact
-                        </li>
-                    </ol>
-                </nav>*@
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Contact
+                            </li>
+                        </ol>
+                    </nav>*@
             </div>
         </div>
     </div>
@@ -95,7 +110,7 @@
                                     <p class="mb-1">
                                         <span class="color-a">tourism.kyustendil@gmail.com</span>
                                     </p>
-                                    <p class="mb-1">                                       
+                                    <p class="mb-1">
                                         <span class="color-a">+359 898 490 664</span>
                                     </p>
                                 </div>
@@ -111,7 +126,7 @@
                                 </div>
                                 <div class="icon-box-content">
                                     <p class="mb-1">
-                                        <span class="color-a">ул. „Отец Паисий“ № 11</span>                                    
+                                        <span class="color-a">ул. „Отец Паисий“ № 11</span>
                                     </p>
                                 </div>
                             </div>
@@ -133,25 +148,25 @@
                                                 </a>
                                             </li>
                                             @*<li class="list-inline-item">
-                                                <a href="#" class="link-one">
-                                                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="#" class="link-one">
-                                                    <i class="fa fa-instagram" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="#" class="link-one">
-                                                    <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="#" class="link-one">
-                                                    <i class="fa fa-dribbble" aria-hidden="true"></i>
-                                                </a>
-                                            </li>*@
+                                                    <a href="#" class="link-one">
+                                                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#" class="link-one">
+                                                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#" class="link-one">
+                                                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#" class="link-one">
+                                                        <i class="fa fa-dribbble" aria-hidden="true"></i>
+                                                    </a>
+                                                </li>*@
                                         </ul>
                                     </div>
                                 </div>
