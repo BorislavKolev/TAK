@@ -38,15 +38,16 @@
 </head>
 <body>
 
-   
+
     <!-- ======= Header/Navbar ======= -->
+
     <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+
         <div class="container">
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
                 <span></span>
-  
             </button>
             <a class="navbar-brand text-brand" asp-area="" asp-controller="Home" asp-action="Index">Сдружение по туризъм<br> <span class="color-b small-font">гр. Кюстендил</span></a>
             @*<button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
@@ -71,12 +72,15 @@
             @*<button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
                 <span class="fa fa-search" aria-hidden="true"></span>
             </button>*@
+
         </div>
+
     </nav><!-- End Header/Navbar -->
+    
 
     <div class="container-fluid">
-        <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
+                <partial name="_CookieConsentPartial" />
             @this.RenderBody()
         </main>
     </div>
@@ -151,8 +155,11 @@
         </div>
     </footer><!-- End  Footer -->
 
-    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-    <div id="preloader"></div>
+    <a href="#" class="back-to-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+    <div id="preloader">
+    </div>
 
     <!-- lib JS Files -->
     <script src="~/lib/jquery/jquery.min.js"></script>
