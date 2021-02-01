@@ -105,8 +105,7 @@
 
             string latinName = Transliteration.CyrillicToLatin(input.Name, Language.Bulgarian);
             latinName = latinName.Replace(' ', '-');
-
-            int locationId = await this.locationsService.CreateAsync(input.Name, input.Description, input.Adress, input.PhoneNumber, input.Email, input.Website, input.FacebookPage, input.InstagramPage, user.Id, input.MapLink, input.Perks, input.Type, imageUrls, latinName);
+            _ = await this.locationsService.CreateAsync(input.Name, input.Description, input.Adress, input.PhoneNumber, input.Email, input.Website, input.FacebookPage, input.InstagramPage, user.Id, input.MapLink, input.Perks, input.Type, imageUrls, latinName);
 
             return this.RedirectToAction("ByName", new { name = latinName });
         }

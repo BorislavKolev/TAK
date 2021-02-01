@@ -31,7 +31,7 @@
             this.cloudinary = cloudinary;
         }
 
-        public IActionResult All(string searchString, string filter, int page = 1)
+        public IActionResult All(string searchString, int page = 1)
         {
             this.ViewData["CurrentSearchString"] = searchString;
 
@@ -109,8 +109,7 @@
 
             string latinTitle = Transliteration.CyrillicToLatin(input.Title, Language.Bulgarian);
             latinTitle = latinTitle.Replace(' ', '-');
-
-            int locationId = await this.newsService.CreateAsync(input.Title, input.Content, user.Id, imageUrls, latinTitle, input.Author);
+            _ = await this.newsService.CreateAsync(input.Title, input.Content, user.Id, imageUrls, latinTitle, input.Author);
 
             return this.RedirectToAction("ByName", new { name = latinTitle });
         }
