@@ -67,6 +67,24 @@
             return query.To<T>().ToList();
         }
 
+        public T GetByName<T>(string name)
+        {
+            var newsPost = this.newsPostsRepository.All().Where(x => x.LatinTitle == name).To<T>().FirstOrDefault();
+
+            return newsPost;
+        }
+
+        public ICollection<string> GetPictureUrls(int id)
+        {
+            var pictureUrls = this.newsPostPicturesRepository
+               .All()
+               .Where(x => x.NewsPostId == id)
+               .Select(u => u.PictureUrl)
+               .ToList();
+
+            return pictureUrls;
+        }
+
         public IEnumerable<T> GetLast<T>(int count)
         {
             var query = this.newsPostsRepository
@@ -75,13 +93,6 @@
                .Take(count);
 
             return query.To<T>().ToList();
-        }
-
-        public T GetByName<T>(string name)
-        {
-            var newsPost = this.newsPostsRepository.All().Where(x => x.LatinTitle == name).To<T>().FirstOrDefault();
-
-            return newsPost;
         }
 
         public async Task<TViewModel> GetViewModelByIdAsync<TViewModel>(int id)
@@ -93,6 +104,11 @@
                 .FirstOrDefaultAsync();
 
             return locationViewModel;
+        }
+
+        public int GetNewsCount()
+        {
+            return this.newsPostsRepository.All().Count();
         }
 
         public async Task<int> EditAsync(string title, string content, string userId, List<string> imageUrls, string latinTitle, string author, int id)
@@ -162,22 +178,6 @@
             }
 
             await this.newsPostPicturesRepository.SaveChangesAsync();
-        }
-
-        public ICollection<string> GetPictureUrls(int id)
-        {
-            var pictureUrls = this.newsPostPicturesRepository
-               .All()
-               .Where(x => x.NewsPostId == id)
-               .Select(u => u.PictureUrl)
-               .ToList();
-
-            return pictureUrls;
-        }
-
-        public int GetNewsCount()
-        {
-            return this.newsPostsRepository.All().Count();
         }
     }
 }

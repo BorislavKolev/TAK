@@ -60,6 +60,67 @@
             return location.Id;
         }
 
+        public IEnumerable<T> GetAll<T>(int? take = null, int skip = 0)
+        {
+            var query = this.locationsRepository
+               .All()
+               .OrderByDescending(x => x.CreatedOn)
+               .Skip(skip);
+
+            if (take.HasValue)
+            {
+                query = query.Take(take.Value);
+            }
+
+            return query.To<T>().ToList();
+        }
+
+        public T GetByName<T>(string name)
+        {
+            var location = this.locationsRepository.All().Where(x => x.LatinName == name).To<T>().FirstOrDefault();
+
+            return location;
+        }
+
+        public ICollection<string> GetPictureUrls(int id)
+        {
+            var pictureUrls = this.locationPicturesRepository
+               .All()
+               .Where(x => x.LocationId == id)
+               .Select(u => u.PictureUrl)
+               .ToList();
+
+            return pictureUrls;
+        }
+
+        public ICollection<string> GetPerks(int id)
+        {
+            var perks = this.locationsRepository
+                .All()
+                .Where(x => x.Id == id)
+                .Select(p => p.Perks)
+                .SingleOrDefault()
+                .Split(", ")
+                .ToList();
+
+            return perks;
+        }
+
+        public int GetLocationsCount()
+        {
+            return this.locationsRepository.All().Count();
+        }
+
+        public IEnumerable<T> GetRandomLocations<T>(int count)
+        {
+            var query = this.locationsRepository
+               .All()
+               .OrderBy(c => Guid.NewGuid())
+               .Take(count);
+
+            return query.To<T>().ToList();
+        }
+
         public async Task<TViewModel> GetViewModelByIdAsync<TViewModel>(int id)
         {
             var locationViewModel = await this.locationsRepository
@@ -146,67 +207,6 @@
             }
 
             await this.locationPicturesRepository.SaveChangesAsync();
-        }
-
-        public IEnumerable<T> GetAll<T>(int? take = null, int skip = 0)
-        {
-            var query = this.locationsRepository
-               .All()
-               .OrderByDescending(x => x.CreatedOn)
-               .Skip(skip);
-
-            if (take.HasValue)
-            {
-                query = query.Take(take.Value);
-            }
-
-            return query.To<T>().ToList();
-        }
-
-        public IEnumerable<T> GetRandomLocations<T>(int count)
-        {
-            var query = this.locationsRepository
-               .All()
-               .OrderBy(c => Guid.NewGuid())
-               .Take(count);
-
-            return query.To<T>().ToList();
-        }
-
-        public T GetByName<T>(string name)
-        {
-            var location = this.locationsRepository.All().Where(x => x.LatinName == name).To<T>().FirstOrDefault();
-
-            return location;
-        }
-
-        public ICollection<string> GetPictureUrls(int id)
-        {
-            var pictureUrls = this.locationPicturesRepository
-               .All()
-               .Where(x => x.LocationId == id)
-               .Select(u => u.PictureUrl)
-               .ToList();
-
-            return pictureUrls;
-        }
-
-        public ICollection<string> GetPerks(int id)
-        {
-            var perks = this.locationsRepository
-                .All()
-                .Where(x => x.Id == id)
-                .Select(p => p.Perks)
-                .SingleOrDefault()
-                .Split(", ")
-                .ToList();
-
-            return perks;
-        }
-
-        public int GetLocationsCount()
-        {
-            return this.locationsRepository.All().Count();
         }
     }
 }

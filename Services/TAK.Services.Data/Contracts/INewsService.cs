@@ -5,22 +5,22 @@
 
     public interface INewsService
     {
-        T GetByName<T>(string name);
-
-        ICollection<string> GetPictureUrls(int id);
-
         Task<int> CreateAsync(string title, string content, string userId, List<string> imageUrls, string latinTitle, string author);
 
         IEnumerable<T> GetAll<T>(int? take = null, int skip = 0);
 
-        Task DeleteByIdAsync(int id);
+        T GetByName<T>(string name);
 
-        Task<int> EditAsync(string title, string content, string userId, List<string> imageUrls, string latinTitle, string author, int id);
-
-        Task<TViewModel> GetViewModelByIdAsync<TViewModel>(int id);
+        ICollection<string> GetPictureUrls(int id);
 
         IEnumerable<T> GetLast<T>(int count);
 
+        Task<TViewModel> GetViewModelByIdAsync<TViewModel>(int id);
+
         int GetNewsCount();
+
+        Task<int> EditAsync(string title, string content, string userId, List<string> imageUrls, string latinTitle, string author, int id);
+
+        Task DeleteByIdAsync(int id);
     }
 }

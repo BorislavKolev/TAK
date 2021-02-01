@@ -31,6 +31,34 @@
             this.cloudinary = cloudinary;
         }
 
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Create()
+        {
+            var viewModel = new NewsCreateInputModel();
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> CreateAsync(NewsCreateInputModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
+            var user = await this.userManager.GetUserAsync(this.User);
+
+            var imageUrls = await CloudinaryExtension.UploadMultipleAsync(this.cloudinary, input.Pictures);
+
+            string latinTitle = Transliteration.CyrillicToLatin(input.Title, Language.Bulgarian);
+            latinTitle = latinTitle.Replace(' ', '-');
+            _ = await this.newsService.CreateAsync(input.Title, input.Content, user.Id, imageUrls, latinTitle, input.Author);
+
+            return this.RedirectToAction("ByName", new { name = latinTitle });
+        }
+
         public IActionResult All(string searchString, int page = 1)
         {
             this.ViewData["CurrentSearchString"] = searchString;
@@ -84,34 +112,6 @@
             newsViewModel.SanitizedContent = sanitizedContent;
 
             return this.View(newsViewModel);
-        }
-
-        [Authorize(Roles = "Administrator")]
-        public IActionResult Create()
-        {
-            var viewModel = new NewsCreateInputModel();
-
-            return this.View(viewModel);
-        }
-
-        [HttpPost]
-        [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> CreateAsync(NewsCreateInputModel input)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(input);
-            }
-
-            var user = await this.userManager.GetUserAsync(this.User);
-
-            var imageUrls = await CloudinaryExtension.UploadMultipleAsync(this.cloudinary, input.Pictures);
-
-            string latinTitle = Transliteration.CyrillicToLatin(input.Title, Language.Bulgarian);
-            latinTitle = latinTitle.Replace(' ', '-');
-            _ = await this.newsService.CreateAsync(input.Title, input.Content, user.Id, imageUrls, latinTitle, input.Author);
-
-            return this.RedirectToAction("ByName", new { name = latinTitle });
         }
 
         [Authorize(Roles = "Administrator")]

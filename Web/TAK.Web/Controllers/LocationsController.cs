@@ -31,6 +31,34 @@
             this.cloudinary = cloudinary;
         }
 
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Create()
+        {
+            var viewModel = new LocationsCreateInputModel();
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> CreateAsync(LocationsCreateInputModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
+            var user = await this.userManager.GetUserAsync(this.User);
+
+            var imageUrls = await CloudinaryExtension.UploadMultipleAsync(this.cloudinary, input.Pictures);
+
+            string latinName = Transliteration.CyrillicToLatin(input.Name, Language.Bulgarian);
+            latinName = latinName.Replace(' ', '-');
+            _ = await this.locationsService.CreateAsync(input.Name, input.Description, input.Adress, input.PhoneNumber, input.Email, input.Website, input.FacebookPage, input.InstagramPage, user.Id, input.MapLink, input.Perks, input.Type, imageUrls, latinName);
+
+            return this.RedirectToAction("ByName", new { name = latinName });
+        }
+
         public IActionResult All(string searchString, string filter, int page = 1)
         {
             this.ViewData["CurrentFilter"] = filter;
@@ -82,33 +110,6 @@
             return this.View(locationViewModel);
         }
 
-        [Authorize(Roles = "Administrator")]
-        public IActionResult Create()
-        {
-            var viewModel = new LocationsCreateInputModel();
-
-            return this.View(viewModel);
-        }
-
-        [HttpPost]
-        [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> CreateAsync(LocationsCreateInputModel input)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(input);
-            }
-
-            var user = await this.userManager.GetUserAsync(this.User);
-
-            var imageUrls = await CloudinaryExtension.UploadMultipleAsync(this.cloudinary, input.Pictures);
-
-            string latinName = Transliteration.CyrillicToLatin(input.Name, Language.Bulgarian);
-            latinName = latinName.Replace(' ', '-');
-            _ = await this.locationsService.CreateAsync(input.Name, input.Description, input.Adress, input.PhoneNumber, input.Email, input.Website, input.FacebookPage, input.InstagramPage, user.Id, input.MapLink, input.Perks, input.Type, imageUrls, latinName);
-
-            return this.RedirectToAction("ByName", new { name = latinName });
-        }
 
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int id)
