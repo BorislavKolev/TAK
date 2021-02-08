@@ -38,22 +38,21 @@
                 <div class="col-sm-12">
                     <div class="grid-option">
                         <div class="container d-flex justify-content-end">
-                            <div class=" mt-12 p-12">
+                            <div class="mt-12 p-12">
                                 <div class="input-group">
-                                    <form asp-action="All" method="get">
-                                        <select class="custom-select" name="filter">
-                                            <option value="">Всички</option>
-                                            <option value="Ресторанти" name="Ресторанти">Ресторанти</option>
-                                            <option value="Кафета" name="Кафета">Кафета</option>
-                                            <option value="Хотели" name="Хотели">Хотели</option>
-                                        </select>
-                                        <input type="submit" value="Филтър" class="btn btn-default" />
-
-                                    </form>
-                                    <form asp-action="All" method="get" style="display: flex;">
-                                        <input type="text" name="searchString" class="form-control border-dark" placeholder="Търсене">
-                                        <div class="input-group-append"><button class="btn btn-outline-success"><i class="fa fa-search"></i></button></div>
-                                    </form>                                   
+                                        <form asp-action="All" method="get" style="display: flex;">
+                                            <select class="custom-select" name="filter">
+                                                <option value="">Всички</option>
+                                                <option value="Ресторанти" name="Ресторанти">Ресторанти</option>
+                                                <option value="Кафета" name="Кафета">Кафета</option>
+                                                <option value="Хотели" name="Хотели">Хотели</option>
+                                            </select>
+                                            <input type="submit" value="Филтър" class="btn" />
+                                        </form>                                  
+                                        <form asp-action="All" method="get" style="display: flex;">
+                                            <input type="text" name="searchString" class="form-control border-dark" placeholder="Търсене">
+                                            <div class="input-group-append"><button class="btn btn-outline-success"><i class="fa fa-search"></i></button></div>
+                                        </form>                                  
                                 </div>
                             </div>                         
                         </div>                       
