@@ -3,6 +3,20 @@
 @{
     this.ViewData["Title"] = this.Model.Title;
 }
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/bg_BG/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+@section metatags
+{
+    <meta property="og:title" content="@Model.Title" />
+    <meta property="og:image" content="@Model.Urls.First()" />
+}
 <main id="main">
 
     <!-- ======= Intro Single ======= -->
@@ -17,15 +31,15 @@
                 </div>
                 <div class="col-md-12 col-lg-4">
                     @*<nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="#">Home</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                Book Cover Deisgn
-                            </li>
-                        </ol>
-                    </nav>*@
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="#">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Book Cover Deisgn
+                                </li>
+                            </ol>
+                        </nav>*@
                 </div>
             </div>
         </div>
@@ -38,21 +52,21 @@
                     <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
                         @foreach (var pictureUrl in Model.Urls)
                         {
-                        <div class="carousel-item-b">
-                            <img src="@pictureUrl" alt="">
-                        </div>
+                            <div class="carousel-item-b">
+                                <img src="@pictureUrl" alt="">
+                            </div>
                         }
                     </div>
                 </div>
                 <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
                     <div class="post-information">
                         <ul class="list-inline text-center color-a">
-                            @if(!String.IsNullOrWhiteSpace(Model.Author))
-                            { 
-                            <li class="list-inline-item mr-2">
-                                <strong>Автор: </strong>
-                                <span class="color-text-a">@Model.Author</span>
-                            </li>
+                            @if (!String.IsNullOrWhiteSpace(Model.Author))
+                            {
+                                <li class="list-inline-item mr-2">
+                                    <strong>Автор: </strong>
+                                    <span class="color-text-a">@Model.Author</span>
+                                </li>
                             }
                             <li class="list-inline-item">
                                 <strong>Дата: </strong>
@@ -69,25 +83,27 @@
                             <ul class="list-inline socials">
                                 <li class="list-inline-item">
                                     @* TO DO: GENERATE UNIQUE LINK WHEN I KNOW THE OFFICIAL DOMAIN AND USE IT IN THE FB SHARE LINK BELOW: string pageUrl= Request.Url.GetLeftPart(UriPartial.Authority).ToString() + "/Uploads/Profiles/Pages/" + post.PostPageLink.ToString();*@
-                                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tourismkyustendil.bg/News/@Model.LatinTitle;src=sdkpreparse" class="fb-xfbml-parse-ignore">
-                                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                                    </a>
+                                    <div class="fb-share-button"
+                                         data-href="http://tourismkyustendil.bg/News/@Model.LatinTitle"
+                                         data-layout="button"
+                                         data-size="large">
+                                    </div>
                                 </li>
                                 @*<li class="list-inline-item">
-                        <a href="#">
-                            <i class="fa fa-twitter" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#">
-                            <i class="fa fa-instagram" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#">
-                            <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                        </a>
-                    </li>*@
+                                        <a href="#">
+                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">
+                                            <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                                        </a>
+                                    </li>*@
                             </ul>
                         </div>
                     </div>

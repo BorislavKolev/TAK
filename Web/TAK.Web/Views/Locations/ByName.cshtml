@@ -64,7 +64,7 @@
                                         {
                                             <li class="d-flex justify-content-between">
                                                 <strong>Уебсайт:</strong>
-                                                <span>@Model.Website</span>
+                                                <a href="https://@Model.Website"><i class="fa fa-globe"></i></a>
                                             </li>
 
                                         }
@@ -72,7 +72,7 @@
                                         {
                                             <li class="d-flex justify-content-between">
                                                 <strong>Facebook:</strong>
-                                                <span>@Model.FacebookPage</span>
+                                                <a href="https://@Model.FacebookPage"><i class="fa fa-facebook-square"></i></a>
                                             </li>
                                         }
                                         @if (!String.IsNullOrWhiteSpace(Model.InstagramPage))
@@ -80,7 +80,7 @@
 
                                             <li class="d-flex justify-content-between">
                                                 <strong>Instagram:</strong>
-                                                <span>@Model.InstagramPage</span>
+                                                <a href="https://@Model.InstagramPage"><i class="fa fa-instagram"></i></a>
                                             </li>
                                         }
                                     </ul>
