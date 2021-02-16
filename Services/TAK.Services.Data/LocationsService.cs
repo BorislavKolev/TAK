@@ -64,7 +64,7 @@
         {
             var query = this.locationsRepository
                .All()
-               .OrderByDescending(x => x.CreatedOn)
+               .OrderByDescending(x => x.PhoneNumber)
                .Skip(skip);
 
             if (take.HasValue)
