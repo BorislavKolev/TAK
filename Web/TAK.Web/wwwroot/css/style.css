@@ -1408,7 +1408,7 @@ a:hover {
 
 /*------/ Property Single /-----*/
 .gallery-property {
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .property-price {
@@ -1533,7 +1533,7 @@ a:hover {
 
 /*------/ News Single /------*/
 .post-information {
-  padding: 3rem 0;
+  padding: 1.5rem 0;
 }
 
 .post-content {
