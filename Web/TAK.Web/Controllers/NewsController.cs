@@ -104,9 +104,13 @@
             sanitizer.AllowedAttributes.Add("data-ephox-embed-iri");
             sanitizer.AllowedAttributes.Add("scrolling");
             sanitizer.AllowedAttributes.Add("allowfullscreen");
+            sanitizer.AllowedAttributes.Add("frameborder");
             sanitizer.AllowedTags.Add("div");
             sanitizer.AllowedTags.Add("iframe");
             sanitizer.AllowedCssProperties.Add("position");
+            sanitizer.AllowedCssProperties.Add("width");
+            sanitizer.AllowedCssProperties.Add("height");
+
             var sanitizedContent = sanitizer.Sanitize(newsViewModel.Content);
 
             newsViewModel.SanitizedContent = sanitizedContent;

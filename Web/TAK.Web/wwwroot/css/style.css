@@ -5,6 +5,22 @@
 * License: https://bootstrapmade.com/license/
 */
 
+
+.video-container {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+.video-container iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -1114,7 +1130,6 @@ a:hover {
 
 @media (max-width: 767px) {
   .intro-single {
-    padding-top: 5rem;
   }
 }
 
